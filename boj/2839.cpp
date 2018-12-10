@@ -6,7 +6,6 @@
 using namespace std;
 
 // https://www.acmicpc.net/problem/2839
-// Thread model: win32
 // gcc version 6.3.0 (MinGW.org GCC-6.3.0-1)
 
 int main() {
