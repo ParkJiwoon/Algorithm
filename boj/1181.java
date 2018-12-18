@@ -2,7 +2,6 @@ import java.util.*;
 import java.io.*;
 
 // https://www.acmicpc.net/problem/1181
-// java version "1.8.0_131"
 
 class Main {
     public static void main(String args[]) throws Exception {
@@ -12,9 +11,8 @@ class Main {
         // 중복 제거를 위해 set으로 먼저 input
         HashSet<String> set = new HashSet<String>();
 
-        for(int i=0; i<N; i++) {
+        for(int i=0; i<N; i++) 
             set.add(br.readLine());
-        }
         
         // List 변환
         ArrayList<String> list = new ArrayList<String>(set);
@@ -32,8 +30,7 @@ class Main {
             }
         });
 
-        for(String s : list) {
+        for(String s : list) 
             System.out.println(s);
-        }
     }
 }
