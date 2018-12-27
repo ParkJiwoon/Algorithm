@@ -1,6 +1,6 @@
 
 /**
- * 모든 부분 집합
+ * 부분 집합
  * 연습 문제 : https://www.acmicpc.net/problem/1182
  */
 
