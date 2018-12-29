@@ -21,8 +21,11 @@ class Main {
             st = new StringTokenizer(br.readLine());
             for(int j=0; j<n; j++) {
                 int temp = Integer.parseInt(st.nextToken());
-                pq.offer(temp);
-                pq.poll();
+
+                if(pq.peek() < temp) {  // Ãß°¡
+                    pq.poll();
+                    pq.offer(temp);
+                }
             }
         }
 
