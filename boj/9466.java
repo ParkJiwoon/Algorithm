@@ -41,7 +41,6 @@ class Main {
             return;
 
         visited[now] = true;
-
         int next = arr[now];
 
         if(visited[next] != true)
