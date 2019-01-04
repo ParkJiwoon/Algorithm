@@ -45,7 +45,7 @@ class Main {
         Queue<Dot> q = new LinkedList<Dot>();
         int day = 0;
 
-        // Åä¸¶Åä°¡ ÀÖ´Â ÁÂÇ¥ Ã£¾Æ¼­ Queue¿¡ ³Ö±â
+        // í† ë§ˆí† ê°€ ìˆëŠ” ì¢Œí‘œ ì°¾ì•„ì„œ Queueì— ë„£ê¸°
         for(int i=0; i<M; i++) {
             for(int j=0; j<N; j++) {
                 if(box[i][j] == 1) 
@@ -53,7 +53,7 @@ class Main {
             }
         }
 
-        // bfs ½ÃÀÛ
+        // bfs ì‹œì‘
         while(!q.isEmpty()) {
             Dot dot = q.poll();
             day = dot.day;
@@ -71,14 +71,14 @@ class Main {
             }
         }
 
-        // Åä¸¶Åä°¡ ´Ù ÀÍ¾ú´ÂÁö È®ÀÎ
+        // í† ë§ˆí† ê°€ ë‹¤ ìµì—ˆëŠ”ì§€ í™•ì¸
         if(checkTomato())
             System.out.println(day);
         else
             System.out.println(-1);
     }    
 
-    // box ¹è¿­¿¡ 0ÀÌ ³²¾ÆÀÖ´Ù¸é false, ¾Æ´Ï¸é true
+    // box ë°°ì—´ì— 0ì´ ë‚¨ì•„ìˆë‹¤ë©´ false, ì•„ë‹ˆë©´ true
     static boolean checkTomato() {
         for(int i=0; i<M; i++) {
             for(int j=0; j<N; j++) {

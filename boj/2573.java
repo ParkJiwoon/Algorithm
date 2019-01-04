@@ -36,7 +36,7 @@ class Main {
         int year = 0;
 
         while(true) {
-            // dfs ∑Œ ∫˘ªÍ µ¢æÓ∏Æ ºº±‚
+            // dfs Î°ú ÎπôÏÇ∞ Îç©Ïñ¥Î¶¨ ÏÑ∏Í∏∞
             int count = 0;
             for(int i=0; i<r; i++) {
                 for(int j=0; j<c; j++) {
@@ -68,11 +68,11 @@ class Main {
             int ny = y + dy[i];
 
             if(0 <= nx && nx < r && 0 <= ny && ny < c) {
-                // 1≥‚ »ƒø° ≥Ï¥¬ ∫˘ªÍ¿« æÁ ±∏«œ±‚
+                // 1ÎÖÑ ÌõÑÏóê ÎÖπÎäî ÎπôÏÇ∞Ïùò Ïñë Íµ¨ÌïòÍ∏∞
                 if(map[nx][ny] == 0)
                     melt[x][y]++;
 
-                // dfs ¿Á±Õ
+                // dfs Ïû¨Í∑Ä
                 if(visited[nx][ny] == 0 && map[nx][ny] != 0)
                     dfs(nx, ny);                    
             }
@@ -81,10 +81,10 @@ class Main {
  
     static void melting() {    
         /**
-        * 1. ∫˘ªÍ ≥Ï¿Ã±‚
-        * 2. ∏∏æ‡ ≥Ï¿Œ ≥Ù¿Ã∞° ¿Ωºˆ∞° µ«∏È 0¿∏∑Œ πŸ≤„¡÷±‚
-        * 3. visited √ ±‚»≠
-        * 4. melt √ ±‚»≠
+        * 1. ÎπôÏÇ∞ ÎÖπÏù¥Í∏∞
+        * 2. ÎßåÏïΩ ÎÖπÏù∏ ÎÜíÏù¥Í∞Ä ÏùåÏàòÍ∞Ä ÎêòÎ©¥ 0ÏúºÎ°ú Î∞îÍøîÏ£ºÍ∏∞
+        * 3. visited Ï¥àÍ∏∞Ìôî
+        * 4. melt Ï¥àÍ∏∞Ìôî
         */               
         for(int i=0; i<r; i++) {
             for(int j=0; j<c; j++) {

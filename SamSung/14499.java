@@ -56,7 +56,7 @@ class Main {
     static int n, m, x, y, k;
     static int[][] map;
     static int[] dir;
-    static int[] dx = {0, 0, -1, 1};    // µ¿¼­ºÏ³²
+    static int[] dx = {0, 0, -1, 1};    // ë™ì„œë¶ë‚¨
     static int[] dy = {1, -1, 0, 0};
 
     static int stoi(String s) { return Integer.parseInt(s);}
@@ -98,7 +98,7 @@ class Main {
             ny = y + dy[direction];
 
             if(0 <= nx && nx < n && 0 <= ny && ny < m) {
-                // µ¿ÂÊÀº 0, ¼­ÂÊÀº 1, ºÏÂÊÀº 2, ³²ÂÊÀº 3
+                // ë™ìª½ì€ 0, ì„œìª½ì€ 1, ë¶ìª½ì€ 2, ë‚¨ìª½ì€ 3
                 if(direction == 0) 
                     dice.moveEast();
                 else if(direction == 1)
@@ -108,7 +108,7 @@ class Main {
                 else if(direction == 3)
                     dice.moveSouth();
 
-                // ¼ıÀÚ º¹»ç
+                // ìˆ«ì ë³µì‚¬
                 if(map[nx][ny] == 0) 
                     map[nx][ny] = dice.bottom;
                 else {
@@ -116,7 +116,7 @@ class Main {
                     map[nx][ny] = 0;
                 }
 
-                // ¸Ç À­¸é Ãâ·Â
+                // ë§¨ ìœ—ë©´ ì¶œë ¥
                 dice.printTopNumber();
 
                 x = nx;

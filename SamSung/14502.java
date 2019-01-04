@@ -44,17 +44,17 @@ class Main {
         System.out.println(max);
     }
 
-    // ¹éÆ®·¡Å·À» ÀÌ¿ëÇÏ¿© 3°³ÀÇ º® ¼¼¿ì±â
+    // ë°±íŠ¸ë˜í‚¹ì„ ì´ìš©í•˜ì—¬ 3ê°œì˜ ë²½ ì„¸ìš°ê¸°
     static void setWall(int start, int depth) {
         if(depth == 3) {
-            // ¸Ê º¹»ç
+            // ë§µ ë³µì‚¬
             copyMap();
 
-            // ¹ÙÀÌ·¯½º ÆÛÆ®¸®±â
+            // ë°”ì´ëŸ¬ìŠ¤ í¼íŠ¸ë¦¬ê¸°
             for(Dot dot : virusList) 
                 spreadVirus(dot.x, dot.y);
 
-            // ¾ÈÀü¿µ¿ª Å©±â ±¸ÇÏ±â
+            // ì•ˆì „ì˜ì—­ í¬ê¸° êµ¬í•˜ê¸°
             max = Math.max(max, getSafeArea());
             return;
         }
@@ -71,7 +71,7 @@ class Main {
         }
     }
 
-    // ±âÁ¸ ¸ÊÀ» À¯ÁöÇÏ±â À§ÇØ ¹ÙÀÌ·¯½º ÆÛÆ®¸± ¸Ê º¹»çÇÏ±â
+    // ê¸°ì¡´ ë§µì„ ìœ ì§€í•˜ê¸° ìœ„í•´ ë°”ì´ëŸ¬ìŠ¤ í¼íŠ¸ë¦´ ë§µ ë³µì‚¬í•˜ê¸°
     static void copyMap() {
         for(int i=0; i<n; i++) {
             for(int j=0; j<m; j++) {
@@ -80,7 +80,7 @@ class Main {
         }
     }
 
-    // DFS ·Î ¹ÙÀÌ·¯½º ÆÛÆ®¸®±â
+    // DFS ë¡œ ë°”ì´ëŸ¬ìŠ¤ í¼íŠ¸ë¦¬ê¸°
     static void spreadVirus(int x, int y) {
         for(int i=0; i<4; i++) {
             int nx = x + dx[i];

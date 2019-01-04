@@ -1,31 +1,31 @@
 import java.util.*;
 
 /**
- * À§»ó Á¤·Ä 
- * Á¶°Ç : DAG(Directed Acyclic Graph, ¹æÇâ¼ºÀÌ ÀÖÀ¸¸ç »çÀÌÅ¬ÀÌ ¾ø´Â ±×·¡ÇÁ)
- * ¿¬½À ¹®Á¦ 1 : https://www.acmicpc.net/problem/2252
- * ¿¬½À ¹®Á¦ 2 : https://www.acmicpc.net/problem/1766
+ * ìœ„ìƒ ì •ë ¬ 
+ * ì¡°ê±´ : DAG(Directed Acyclic Graph, ë°©í–¥ì„±ì´ ìˆìœ¼ë©° ì‚¬ì´í´ì´ ì—†ëŠ” ê·¸ë˜í”„)
+ * ì—°ìŠµ ë¬¸ì œ 1 : https://www.acmicpc.net/problem/2252
+ * ì—°ìŠµ ë¬¸ì œ 2 : https://www.acmicpc.net/problem/1766
  */
 
 public class TopologicalSort {
     static int n;
     static int e;
     public static void main(String[] args) {
-        n = 7; // Á¤Á¡ °¹¼ö
-        e = 9; // °£¼± °¹¼ö
+        n = 7; // ì •ì  ê°¯ìˆ˜
+        e = 9; // ê°„ì„  ê°¯ìˆ˜
         int[] indegree = new int[n+1];
         List<List<Integer>> array = new ArrayList<List<Integer>>();
 
         for(int i=0; i<n+1; i++) 
             array.add(new ArrayList<Integer>());
         
-        // °£¼± ¸ñ·Ï v1 -> v2
+        // ê°„ì„  ëª©ë¡ v1 -> v2
         int[] v1 = {1, 1, 2, 4, 3, 3, 5, 2, 5};
         int[] v2 = {2, 3, 5, 6, 4, 7, 6, 4, 4};
 
         /**
-         * 1. v1 -> v2 ÀÎÁ¢¸®½ºÆ® »ı¼º
-         * 2. v2 ¸¦ °¡¸®Å°´Â ³ëµå °¹¼ö indegree Áõ°¡
+         * 1. v1 -> v2 ì¸ì ‘ë¦¬ìŠ¤íŠ¸ ìƒì„±
+         * 2. v2 ë¥¼ ê°€ë¦¬í‚¤ëŠ” ë…¸ë“œ ê°¯ìˆ˜ indegree ì¦ê°€
          */
         for(int i=0; i<e; i++) {
             int c1 = v1[i];
@@ -42,16 +42,16 @@ public class TopologicalSort {
         Queue<Integer> q = new LinkedList<Integer>();
         Queue<Integer> result = new LinkedList<Integer>();
 
-        // Å¥¿¡ indegree °¡ 0 ÀÎ ³ëµå ´ã±â
+        // íì— indegree ê°€ 0 ì¸ ë…¸ë“œ ë‹´ê¸°
         for(int i=1; i<n+1; i++) {
             if(indegree[i] == 0)
                 q.offer(i);
         }
 
         /**
-         * 1. Å¥¿¡¼­ °ªÀ» ²¨³»¸ç ÇØ´ç ³ëµå°¡ °¡¸®Å°´Â ³ëµåÀÇ indegree ¸¦ 1 °¨¼Ò
-         * 2. ¸¸¾à indegree°¡ 0 ÀÌ µÈ´Ù¸é Å¥¿¡ ³Ö±â
-         * 3. Å¥°¡ ºô¶§±îÁö ¹İº¹
+         * 1. íì—ì„œ ê°’ì„ êº¼ë‚´ë©° í•´ë‹¹ ë…¸ë“œê°€ ê°€ë¦¬í‚¤ëŠ” ë…¸ë“œì˜ indegree ë¥¼ 1 ê°ì†Œ
+         * 2. ë§Œì•½ indegreeê°€ 0 ì´ ëœë‹¤ë©´ íì— ë„£ê¸°
+         * 3. íê°€ ë¹Œë•Œê¹Œì§€ ë°˜ë³µ
          */
         while(!q.isEmpty()) {
             int node = q.poll();

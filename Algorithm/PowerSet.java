@@ -1,7 +1,7 @@
 
 /**
- * ºÎºÐ ÁýÇÕ
- * ¿¬½À ¹®Á¦ : https://www.acmicpc.net/problem/1182
+ * ëª¨ë“  ë¶€ë¶„ ì§‘í•©
+ * ì—°ìŠµ ë¬¸ì œ : https://www.acmicpc.net/problem/1182
  */
 
 public class PowerSet {

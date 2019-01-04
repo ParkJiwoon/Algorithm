@@ -9,7 +9,7 @@ class Main {
     static int n, m;
     static int[][] map;
     static int r, c, d;
-    static int[] dx = {-1, 0, 1, 0};    // ºÏµ¿³²¼­
+    static int[] dx = {-1, 0, 1, 0};    // ë¶ë™ë‚¨ì„œ
     static int[] dy = {0, 1, 0, -1};
     static int turnCount = 0;
 
@@ -38,38 +38,38 @@ class Main {
 
     static void solution() {
         /**
-         * 0 : Ã»¼ÒÇÏÁö¾ÊÀº °ø°£
-         * 1 : º®
-         * 2 : Ã»¼ÒÇÑ °ø°£
+         * 0 : ì²­ì†Œí•˜ì§€ì•Šì€ ê³µê°„
+         * 1 : ë²½
+         * 2 : ì²­ì†Œí•œ ê³µê°„
          */
 
         while(true) {     
-            // ³× ¹æÇâ ¸ðµÎ Ã»¼Ò°¡ µÇ¾îÀÖ°Å³ª ÀÌ¹Ì º®ÀÌ¸é ÈÄÁø ÈÄ 2¹øÀ¸·Î
+            // ë„¤ ë°©í–¥ ëª¨ë‘ ì²­ì†Œê°€ ë˜ì–´ìžˆê±°ë‚˜ ì´ë¯¸ ë²½ì´ë©´ í›„ì§„ í›„ 2ë²ˆìœ¼ë¡œ
             if(turnCount == 4) {
                 int backX = r - dx[d];
                 int backY = c - dy[d];
 
-                // º®ÀÌ¸é Á¾·á
+                // ë²½ì´ë©´ ì¢…ë£Œ
                 if(map[backX][backY] == 1) {
                     System.out.println(getCleanArea());
                     return;
                 }
-                // º® ¾Æ´Ï¸é ÈÄÁø
+                // ë²½ ì•„ë‹ˆë©´ í›„ì§„
                 else
                     setRobot(backX, backY, d, 0);
             }
 
-            // 1. ÇöÀç À§Ä¡ Ã»¼Ò
+            // 1. í˜„ìž¬ ìœ„ì¹˜ ì²­ì†Œ
             if(map[r][c] == 0)
                 map[r][c] = 2;
 
-            // 2. ÇöÀç ¹æÇâÀ» ±âÁØÀ¸·Î ¿ÞÂÊ¹æÇâ È®ÀÎ
+            // 2. í˜„ìž¬ ë°©í–¥ì„ ê¸°ì¤€ìœ¼ë¡œ ì™¼ìª½ë°©í–¥ í™•ì¸
             int ld = (d+3)%4;
             int nx = r + dx[ld];
             int ny = c + dy[ld];
 
-            // 3. Ã»¼Ò°ø°£ ÀÖÀ½ -> ÇÑÄ­ ÀüÁø ÇÏ°í 1¹øÀ¸·Î
-            // 4. Ã»¼Ò°ø°£ ¾øÀ½ -> ±× ¹æÇâÀ¸·Î È¸ÀüÇÏ°í 2¹øÀ¸·Î
+            // 3. ì²­ì†Œê³µê°„ ìžˆìŒ -> í•œì¹¸ ì „ì§„ í•˜ê³  1ë²ˆìœ¼ë¡œ
+            // 4. ì²­ì†Œê³µê°„ ì—†ìŒ -> ê·¸ ë°©í–¥ìœ¼ë¡œ íšŒì „í•˜ê³  2ë²ˆìœ¼ë¡œ
             if(map[nx][ny] == 0)
                 setRobot(nx, ny, ld, 0);
             else
@@ -77,7 +77,7 @@ class Main {
         }
     }
 
-    // r, c, d, count ¼³Á¤
+    // r, c, d, count ì„¤ì •
     static void setRobot(int nextX, int nextY, int nextD, int nextCount) {
         r = nextX;
         c = nextY;

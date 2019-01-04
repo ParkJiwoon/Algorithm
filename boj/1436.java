@@ -11,7 +11,7 @@ class Main {
 
         while(N > 0) {
             num++;
-            String str = Integer.toString(num);   // int to string Çüº¯È¯
+            String str = Integer.toString(num);   // int to string
 
             if(str.contains("666")) 
                 N--;

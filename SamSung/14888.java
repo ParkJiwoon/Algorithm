@@ -1,3 +1,4 @@
+
 import java.util.*;
 import java.io.*;
 
@@ -29,7 +30,7 @@ class Main {
         for(int i=0; i<4; i++) {
             int temp = stoi(st.nextToken());
 
-            // 1:µ¡¼À, 2:»¬¼À, 3:°ö¼À, 4:³ª´°¼À
+            // 1:ë§ì…ˆ, 2:ëº„ì…ˆ, 3:ê³±ì…ˆ, 4:ë‚˜ëˆ—ì…ˆ
             for(int j=0; j<temp; j++) {
                 if(i == 0)  operator[idx++] = 1;
                 else if(i == 1) operator[idx++] = 2;
@@ -38,13 +39,13 @@ class Main {
             }
         }
 
-        // °è»ê ½ÃÀÛ
+        // ê³„ì‚° ì‹œìž‘
         permutation(0);
         System.out.println(max);
         System.out.println(min);
     }
 
-    // ¼ø¿­ ±¸ÇÏ±â
+    // ìˆœì—´ êµ¬í•˜ê¸°
     static void permutation(int depth) {
         if(depth == n-1) {            
             calculate();
@@ -64,7 +65,7 @@ class Main {
         operator[j] = temp;
     }
 
-    // °¢ ¼ø¿­¿¡ ´ëÇØ¼­ ¿¬»ê ÈÄ max, min °ª Ã£±â
+    // ê° ìˆœì—´ì— ëŒ€í•´ì„œ ì—°ì‚° í›„ max, min ê°’ ì°¾ê¸°
     static void calculate() {
         int result = a[0];
         

@@ -4,8 +4,8 @@ import java.io.*;
 // https://www.acmicpc.net/problem/1766
 
 class Main {
-    static int n;   // ³ëµå °¹¼ö
-    static int m;   // °£¼± °¹¼ö
+    static int n;   // ë…¸ë“œ ê°¯ìˆ˜
+    static int m;   // ê°„ì„  ê°¯ìˆ˜
 
     public static void main(String[] args) throws Exception {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -33,7 +33,7 @@ class Main {
         topologicalSort(indegree, list);        
     }
 
-    // ½¬¿î ¹®Á¦¸¦ ¸ÕÀú Ç®±â À§ÇØ¼­ ¿ì¼±¼øÀ§ Å¥¿¡ ´ãÀ½
+    // ì‰¬ìš´ ë¬¸ì œë¥¼ ë¨¼ì € í’€ê¸° ìœ„í•´ì„œ ìš°ì„ ìˆœìœ„ íì— ë‹´ìŒ
     static void topologicalSort(int[] indegree, List<List<Integer>> list) {
         PriorityQueue<Integer> pq = new PriorityQueue<Integer>();
 

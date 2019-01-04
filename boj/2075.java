@@ -22,7 +22,7 @@ class Main {
             for(int j=0; j<n; j++) {
                 int temp = Integer.parseInt(st.nextToken());
 
-                if(pq.peek() < temp) {  // Ãß°¡
+                if(pq.peek() < temp) {  
                     pq.poll();
                     pq.offer(temp);
                 }

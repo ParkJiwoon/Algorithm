@@ -20,14 +20,14 @@ class Main {
             P[i] = Integer.parseInt(st.nextToken());
         }
         
-        // dp ½ÃÀÛ
+        // dp ì‹œì‘
         for(int i=N; i>0; i--) {
-            int day = i + T[i];     // i¹øÂ° ³¯ÀÇ »ó´ã±â°£
+            int day = i + T[i];     // ië²ˆì§¸ ë‚ ì˜ ìƒë‹´ê¸°ê°„
 
             if(day <= N+1) 
                 dp[i] = Math.max(P[i] + dp[day], dp[i+1]);
             else
-                // »ó´ãÀÏ ÃÊ°ú
+                // ìƒë‹´ì¼ ì´ˆê³¼
                 dp[i] = dp[i+1];
         }
 

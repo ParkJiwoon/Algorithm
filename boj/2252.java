@@ -4,8 +4,8 @@ import java.io.*;
 // https://www.acmicpc.net/problem/2252
 
 class Main {
-    static int n;   // ³ëµå °¹¼ö
-    static int m;   // °£¼± °¹¼ö
+    static int n;   // ë…¸ë“œ ê°¯ìˆ˜
+    static int m;   // ê°„ì„  ê°¯ìˆ˜
 
     public static void main(String[] args) throws Exception {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -38,14 +38,14 @@ class Main {
         Queue<Integer> q = new LinkedList<Integer>();
         Queue<Integer> result = new LinkedList<Integer>();
 
-        // indegree°¡ 0 ÀÎ ³ëµå Queue ¿¡ ³Ö±â
+        // indegreeê°€ 0 ì¸ ë…¸ë“œ Queue ì— ë„£ê¸°
         for(int i=1; i<=n; i++) {
             if(indegree[i] == 0)
                 q.offer(i);
         }
 
-        // q ¿¡¼­ ³ëµå¸¦ ÇÏ³ª¾¿ »©¸ç ¿¬°áµÈ ³ëµåÀÇ indegree °¨¼Ò
-        // indegree °¡ 0 ÀÌ µÈ ³ëµåµé Queue ¿¡ ³Ö±â
+        // q ì—ì„œ ë…¸ë“œë¥¼ í•˜ë‚˜ì”© ë¹¼ë©° ì—°ê²°ëœ ë…¸ë“œì˜ indegree ê°ì†Œ
+        // indegree ê°€ 0 ì´ ëœ ë…¸ë“œë“¤ Queue ì— ë„£ê¸°
         while(!q.isEmpty()) {
             int node = q.poll();
             result.offer(node);
@@ -58,7 +58,7 @@ class Main {
             }
         }
 
-        // °á°ú Ãâ·Â
+        // ê²°ê³¼ ì¶œë ¥
         while(!result.isEmpty()) {
             System.out.print(result.poll() + " ");
         }

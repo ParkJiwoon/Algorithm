@@ -30,7 +30,7 @@ class Main {
         System.out.println(min);
     }
 
-    // ¸ğµç ÆÀÀÇ Á¶ÇÕ ±¸ÇÏ±â
+    // ëª¨ë“  íŒ€ì˜ ì¡°í•© êµ¬í•˜ê¸°
     static void comb(int start, int depth) {
         if(depth == n/2) {
             min = Math.min(min, getAbilityDifference());
@@ -46,18 +46,18 @@ class Main {
         }
     }
 
-    // ÆÀÀÇ ´É·ÂÄ¡ Â÷ÀÌ¸¦ ±¸ÇÏ±â
+    // íŒ€ì˜ ëŠ¥ë ¥ì¹˜ ì°¨ì´ë¥¼ êµ¬í•˜ê¸°
     static int getAbilityDifference() {
         int sumStart = 0;
         int sumLink = 0;
 
         for(int i=1; i<n+1; i++) {
             for(int j=1; j<n+1; j++) {
-                // true ¸é ½ºÅ¸Æ®ÆÀ
+                // true ë©´ ìŠ¤íƒ€íŠ¸íŒ€
                 if(visited[i] && visited[j])
                     sumStart += arr[i][j];
 
-                // false ¸é ¸µÅ©ÆÀ
+                // false ë©´ ë§í¬íŒ€
                 if(visited[i] != true && visited[j] != true)
                     sumLink += arr[i][j];
             }

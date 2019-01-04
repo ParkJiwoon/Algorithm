@@ -21,7 +21,7 @@ class Main {
             arr[i] = Integer.parseInt(st.nextToken());
 
         powerSet(arr, n, 0, 0);        
-        // s°¡ 0 ÀÏ¶§´Â ºÎºĞÁıÇÕ Áß¿¡ °øÁıÇÕÀÎ °æ¿ìµµ Ä«¿îÆ® µÉ ¼ö ÀÖÀ½
+        // sê°€ 0 ì¼ë•ŒëŠ” ë¶€ë¶„ì§‘í•© ì¤‘ì— ê³µì§‘í•©ì¸ ê²½ìš°ë„ ì¹´ìš´íŠ¸ ë  ìˆ˜ ìˆìŒ
         if(s == 0)
             count--;
         System.out.println(count);

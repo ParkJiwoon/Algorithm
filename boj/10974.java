@@ -18,7 +18,7 @@ class Main {
         perm(arr, output, visited, 0, n, n);        
     }
 
-    // ¼ø¼­¸¦ ÁöÅ°¸é¼­ n °³Áß¿¡¼­ r °³¸¦ »Ì´Â °æ¿ì
+    // ìˆœì„œë¥¼ ì§€í‚¤ë©´ì„œ n ê°œì¤‘ì—ì„œ r ê°œë¥¼ ë½‘ëŠ” ê²½ìš°
     static void perm(int[] arr, int[] output, boolean[] visited, int depth, int n, int r) {
         if(depth == r) {
             print(output, r);

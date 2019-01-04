@@ -21,7 +21,7 @@ class Main {
     static int L;
     static int[] time;
     static int[] dir;
-    static int[] dx = {-1, 0, 1, 0};    // ºÏµ¿³²¼­
+    static int[] dx = {-1, 0, 1, 0};    // ë¶ë™ë‚¨ì„œ
     static int[] dy = {0, 1, 0, -1};
     static Deque<Dot> snake = new ArrayDeque<Dot>();
 
@@ -31,14 +31,14 @@ class Main {
         
         n = stoi(br.readLine());
         K = stoi(br.readLine());
-        map = new int[n+1][n+1];    // ¸Ç À§ ¸Ç ÁÂÃøÀº (1,1)
+        map = new int[n+1][n+1];    // ë§¨ ìœ„ ë§¨ ì¢Œì¸¡ì€ (1,1)
 
         for(int i=0; i<K; i++) {
             st = new StringTokenizer(br.readLine());
 
             int v1 = stoi(st.nextToken());
             int v2 = stoi(st.nextToken());
-            map[v1][v2] = 1;    // »ç°ú À§Ä¡´Â 1
+            map[v1][v2] = 1;    // ì‚¬ê³¼ ìœ„ì¹˜ëŠ” 1
         }
 
         L = stoi(br.readLine());
@@ -52,29 +52,29 @@ class Main {
             dir[i] = getDirection(st.nextToken());
         }
 
-        // ¹®Á¦ Ç®ÀÌ
+        // ë¬¸ì œ í’€ì´
         solution();
     }
 
     static void solution() {
         int second = 0;
-        int snakeDir = 1;    // Ã¹ ¹æÇâÀº ¿À¸¥ÂÊ
+        int snakeDir = 1;    // ì²« ë°©í–¥ì€ ì˜¤ë¥¸ìª½
         int timeIdx = 0;
-        map[1][1] = 2;  // Ã³À½ ¹ìÀÇ À§Ä¡´Â (1,1)
+        map[1][1] = 2;  // ì²˜ìŒ ë±€ì˜ ìœ„ì¹˜ëŠ” (1,1)
         snake.add(new Dot(1, 1));
 
         while(true) {
-            // ½Ã°£ÀÌ Áö³ª¸é ¹æÇâ ¹Ù²Ù±â
+            // ì‹œê°„ì´ ì§€ë‚˜ë©´ ë°©í–¥ ë°”ê¾¸ê¸°
             if(timeIdx < L && time[timeIdx] == second) {
                 snakeDir = (snakeDir + dir[timeIdx])%4;
                 timeIdx++;
             }
 
-            // 1. ¸ö±æÀÌ¸¦ ´Ã·Á ¸Ó¸®¸¦ ´ÙÀ½ Ä­¿¡ À§Ä¡½ÃÅ²´Ù
+            // 1. ëª¸ê¸¸ì´ë¥¼ ëŠ˜ë ¤ ë¨¸ë¦¬ë¥¼ ë‹¤ìŒ ì¹¸ì— ìœ„ì¹˜ì‹œí‚¨ë‹¤
             int nx = snake.getFirst().x + dx[snakeDir];
             int ny = snake.getFirst().y + dy[snakeDir];
 
-            // ¸öÀÌ³ª º®°ú ºÎµúÈ÷¸é °ÔÀÓ ³¡
+            // ëª¸ì´ë‚˜ ë²½ê³¼ ë¶€ë”ªíˆë©´ ê²Œì„ ë
             if(nx <= 0 || nx > n || ny <= 0 || ny > n) {
                 System.out.println(second + 1);
                 break;
@@ -84,12 +84,12 @@ class Main {
                 break;
             }        
 
-            // 2. ¸¸¾à ÀÌµ¿ÇÑ Ä­¿¡ »ç°ú°¡ ÀÖ´Ù¸é, »ç°ú ¾ø¾îÁö°í ²¿¸® ±×´ë·Î ¸Ó¸® Ãß°¡
+            // 2. ë§Œì•½ ì´ë™í•œ ì¹¸ì— ì‚¬ê³¼ê°€ ìˆë‹¤ë©´, ì‚¬ê³¼ ì—†ì–´ì§€ê³  ê¼¬ë¦¬ ê·¸ëŒ€ë¡œ ë¨¸ë¦¬ ì¶”ê°€
             if(map[nx][ny] == 1) {
                 map[nx][ny] = 2;
                 snake.addFirst(new Dot(nx, ny));
             }
-            // 3. ¸¸¾à ÀÌµ¿ÇÑ Ä­¿¡ »ç°ú°¡ ¾ø´Ù¸é, ¸ö±æÀÌ¸¦ ÁÙ¿© ²¿¸®°¡ À§Ä¡ÇÑ Ä­ ºñ¿ì±â
+            // 3. ë§Œì•½ ì´ë™í•œ ì¹¸ì— ì‚¬ê³¼ê°€ ì—†ë‹¤ë©´, ëª¸ê¸¸ì´ë¥¼ ì¤„ì—¬ ê¼¬ë¦¬ê°€ ìœ„ì¹˜í•œ ì¹¸ ë¹„ìš°ê¸°
             else if(map[nx][ny] == 0) {
                 map[nx][ny] = 2;
                 snake.addFirst(new Dot(nx, ny));
@@ -102,7 +102,7 @@ class Main {
         }
     }
     
-    // ¿À¸¥ÂÊÀº 1 ¿ŞÂÊÀº 3
+    // ì˜¤ë¥¸ìª½ì€ 1 ì™¼ìª½ì€ 3
     static int getDirection(String s) {
         if(s.equals("D")) 
             return 1;

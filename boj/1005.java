@@ -4,8 +4,8 @@ import java.io.*;
 // https://www.acmicpc.net/problem/1005
 
 class Main {
-    static int n;   // ³ëµå °¹¼ö
-    static int k;   // °£¼± °¹¼ö
+    static int n;   // ë…¸ë“œ ê°¯ìˆ˜
+    static int k;   // ê°„ì„  ê°¯ìˆ˜
     static int[] d;
 
     public static void main(String[] args) throws Exception {
@@ -51,7 +51,7 @@ class Main {
         Queue<Integer> q = new LinkedList<Integer>();
         int[] result = new int[n+1];
 
-        // °Ç¹°ÀÇ ¼Ò¿ä ±âº» ¼Ò¿ä½Ã°£Àº d[i]
+        // ê±´ë¬¼ì˜ ì†Œìš” ê¸°ë³¸ ì†Œìš”ì‹œê°„ì€ d[i]
         for(int i=1; i<=n; i++) {
             result[i] = d[i];
 
@@ -59,8 +59,8 @@ class Main {
                 q.offer(i);
         }
 
-        // °Ç¹°ÀÇ ÃÑ ¼Ò¿ä½Ã°£ = ÀÌÀü±îÁöÀÇ ¼Ò¿ä½Ã°£ + ÇöÀç °Ç¹° ¼Ò¿ä½Ã°£
-        // Max ÇØÁÖ´Â ÀÌÀ¯´Â ÀÌÀü Å×Å©°¡ ´Ù ¿Ã¶ó¾ß ÇöÀç °Ç¹°À» ÁöÀ» ¼ö ÀÖ±â ¶§¹®
+        // ê±´ë¬¼ì˜ ì´ ì†Œìš”ì‹œê°„ = ì´ì „ê¹Œì§€ì˜ ì†Œìš”ì‹œê°„ + í˜„ì¬ ê±´ë¬¼ ì†Œìš”ì‹œê°„
+        // Max í•´ì£¼ëŠ” ì´ìœ ëŠ” ì´ì „ í…Œí¬ê°€ ë‹¤ ì˜¬ë¼ì•¼ í˜„ì¬ ê±´ë¬¼ì„ ì§€ì„ ìˆ˜ ìˆê¸° ë•Œë¬¸
         while(!q.isEmpty()) {
             int node = q.poll();
 

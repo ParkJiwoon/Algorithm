@@ -1,8 +1,8 @@
 import java.util.*;
  
 /**
- * Á¶ÇÕ : n °³ Áß¿¡¼­ r °³ ¼±ÅÃ
- * ¿¬½À¹®Á¦ : https://www.acmicpc.net/problem/2309
+ * ì¡°í•© : n ê°œ ì¤‘ì—ì„œ r ê°œ ì„ íƒ
+ * ì—°ìŠµë¬¸ì œ : https://www.acmicpc.net/problem/2309
  */
  
 public class Combination {
@@ -22,8 +22,8 @@ public class Combination {
         }
     }
 
-    // ¹éÆ®·¡Å· »ç¿ë
-    // »ç¿ë ¿¹½Ã : combination(arr, visited, 0, n, r)
+    // ë°±íŠ¸ë˜í‚¹ ì‚¬ìš©
+    // ì‚¬ìš© ì˜ˆì‹œ : combination(arr, visited, 0, n, r)
     static void combination(int[] arr, boolean[] visited, int start, int n, int r) {
         if(r == 0) {
             print(arr, visited, n);
@@ -37,8 +37,8 @@ public class Combination {
         }
     }
 
-    // Àç±Í »ç¿ë
-    // »ç¿ë ¿¹½Ã : comb(arr, visited, 0, n, r)
+    // ì¬ê·€ ì‚¬ìš©
+    // ì‚¬ìš© ì˜ˆì‹œ : comb(arr, visited, 0, n, r)
     static void comb(int[] arr, boolean[] visited, int depth, int n, int r) {
         if(r == 0) {
             print(arr, visited, n);
@@ -55,7 +55,7 @@ public class Combination {
         }
     }
  
-    // ¹è¿­ Ãâ·Â
+    // ë°°ì—´ ì¶œë ¥
     static void print(int[] arr, boolean[] visited, int n) {
         for(int i=0; i<n; i++) {
             if(visited[i] == true)
