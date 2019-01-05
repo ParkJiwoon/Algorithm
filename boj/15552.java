@@ -2,7 +2,6 @@ import java.util.*;
 import java.io.*;
 
 // https://www.acmicpc.net/problem/15552
-// java version "1.8.0_131"
 
 class Main {
     public static void main(String args[]) throws Exception {
@@ -17,7 +16,7 @@ class Main {
             int B = Integer.parseInt(st.nextToken());
             int sum = A+B;
 
-            bw.write(String.valueOf(sum) + "\n");
+            bw.write(sum + "\n");
         }
         bw.flush();
     }
