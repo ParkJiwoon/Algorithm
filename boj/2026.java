@@ -27,7 +27,7 @@ class Main {
         sb = new StringBuilder();
         int[] indegree = new int[n+1];
 
-        // 그래프 형성
+        // 인접행렬 형성
         for(int i=0; i<f; i++) {
             st = new StringTokenizer(br.readLine());
             int v1 = stoi(st.nextToken());
