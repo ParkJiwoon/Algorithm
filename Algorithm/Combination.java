@@ -1,5 +1,4 @@
-import java.util.*;
- 
+
 /**
  * 조합 : n 개 중에서 r 개 선택
  * 연습문제 : https://www.acmicpc.net/problem/2309
