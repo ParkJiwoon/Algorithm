@@ -4,7 +4,9 @@ import java.io.*;
 // https://www.acmicpc.net/problem/2667
 
 class Main {
-    static int stoi(String s) { return Integer.parseInt(s);}
+    static int stoi(String s) {
+        return Integer.parseInt(s);
+    }
 
     static int n;
     static int[][] arr;
@@ -18,11 +20,11 @@ class Main {
 
         n = stoi(br.readLine());
         arr = new int[n][n];
-        
-        for(int i=0; i<n; i++) {
+
+        for (int i = 0; i < n; i++) {
             String s = br.readLine();
 
-            for(int j=0; j<n; j++)
+            for (int j = 0; j < n; j++)
                 arr[i][j] = s.charAt(j) - '0';
         }
 
@@ -34,12 +36,12 @@ class Main {
         int total = 0;
         PriorityQueue<Integer> pq = new PriorityQueue<Integer>();
 
-        for(int i=0; i<n; i++) {
-            for(int j=0; j<n; j++) {
-                if(arr[i][j] == 1) {
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                if (arr[i][j] == 1) {
                     count = 0;
                     total++;
-                    
+
                     dfs(i, j);
 
                     pq.add(count);
@@ -49,7 +51,7 @@ class Main {
 
         bw.write(total + "\n");
 
-        while(!pq.isEmpty())
+        while (!pq.isEmpty())
             bw.write(pq.poll() + "\n");
 
         bw.flush();
@@ -60,12 +62,12 @@ class Main {
         arr[x][y] = 0;
         count++;
 
-        for(int i=0; i<4; i++) {
+        for (int i = 0; i < 4; i++) {
             int nx = x + dx[i];
             int ny = y + dy[i];
 
-            if(0 <= nx && nx < n && 0 <= ny && ny < n) {
-                if(arr[nx][ny] == 1)
+            if (0 <= nx && nx < n && 0 <= ny && ny < n) {
+                if (arr[nx][ny] == 1)
                     dfs(nx, ny);
             }
         }

@@ -9,11 +9,11 @@ class Main {
         int N = Integer.parseInt(br.readLine());
         int num = 0;
 
-        while(N > 0) {
+        while (N > 0) {
             num++;
             String str = Integer.toString(num);   // int to string
 
-            if(str.contains("666")) 
+            if (str.contains("666"))
                 N--;
         }
 

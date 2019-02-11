@@ -4,7 +4,9 @@ import java.io.*;
 // https://www.acmicpc.net/problem/9466
 
 class Main {
-    static int stoi(String s) { return Integer.parseInt(s);}
+    static int stoi(String s) {
+        return Integer.parseInt(s);
+    }
 
     static int n;
     static int[] arr;
@@ -18,44 +20,44 @@ class Main {
 
         int tc = stoi(br.readLine());
 
-        for(int t=0; t<tc; t++) {
+        for (int t = 0; t < tc; t++) {
             n = stoi(br.readLine());
-            arr = new int[n+1];
-            visited = new boolean[n+1];
-            finished = new boolean[n+1];
+            arr = new int[n + 1];
+            visited = new boolean[n + 1];
+            finished = new boolean[n + 1];
             count = 0;
 
             st = new StringTokenizer(br.readLine());
-            for(int i=1; i<n+1; i++) 
+            for (int i = 1; i < n + 1; i++)
                 arr[i] = stoi(st.nextToken());
 
-            for(int i=1; i<n+1; i++)
+            for (int i = 1; i < n + 1; i++)
                 dfs(i);
 
             System.out.println(n - count);
         }
     }
 
-    static void dfs(int now) { 
-        if(visited[now])
+    static void dfs(int now) {
+        if (visited[now])
             return;
 
         visited[now] = true;
         int next = arr[now];
 
-        if(visited[next] != true)
+        if (visited[next] != true)
             dfs(next);
         else {
-            if(finished[next] != true) {
-                // ³ëµå°¡ ³¡³ª·Á¸é ½ÎÀÌÅ¬À» ¹«Á¶°Ç °ÅÃÄ¾ßÇÑ´Ù.
-                // µû¶ó¼­ ÇöÀç ³ëµå°¡ ¾Æ´Ñ ´ÙÀ½ ³ëµå ±âÁØÀ¸·Î ÇÏ¸é ½ÎÀÌÅ¬ÀÌ ¹«Á¶°Ç Á¸Àç
+            if (finished[next] != true) {
+                // ï¿½ï¿½å°¡ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Å¬ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ä¾ï¿½ï¿½Ñ´ï¿½.
+                // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½å°¡ ï¿½Æ´ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ï¸ï¿½ ï¿½ï¿½ï¿½ï¿½Å¬ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
                 count++;
-                for(int i=next; i != now; i = arr[i])
+                for (int i = next; i != now; i = arr[i])
                     count++;
             }
         }
 
-        // ¸ðµç ÀÛ¾÷ÀÌ ³¡³ª¼­ ´õÀÌ»ó »ç¿ëÇÏÁö ¾ÊÀ½
+        // ï¿½ï¿½ï¿½ ï¿½Û¾ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ì»ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         finished[now] = true;
     }
 }

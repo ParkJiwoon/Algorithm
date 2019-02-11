@@ -12,31 +12,32 @@ class Main {
         int[] output = new int[n];
         boolean[] visited = new boolean[n];
 
-        for(int i=0; i<n; i++)
-            arr[i] = i+1;
+        for (int i = 0; i < n; i++)
+            arr[i] = i + 1;
 
-        perm(arr, output, visited, 0, n, n);        
+        perm(arr, output, visited, 0, n, n);
     }
 
     // 순서를 지키면서 n 개중에서 r 개를 뽑는 경우
     static void perm(int[] arr, int[] output, boolean[] visited, int depth, int n, int r) {
-        if(depth == r) {
+        if (depth == r) {
             print(output, r);
             return;
         }
-    
-        for(int i=0; i<n; i++) {
-            if(visited[i] != true) {
+
+        for (int i = 0; i < n; i++) {
+            if (visited[i] != true) {
                 visited[i] = true;
                 output[depth] = arr[i];
-                perm(arr, output, visited, depth + 1, n, r);    
-                visited[i] = false;;
+                perm(arr, output, visited, depth + 1, n, r);
+                visited[i] = false;
+                ;
             }
         }
     }
 
     static void print(int[] arr, int r) {
-        for(int i=0; i<r; i++)
+        for (int i = 0; i < r; i++)
             System.out.print(arr[i] + " ");
         System.out.println();
     }

@@ -16,12 +16,12 @@ class Main {
         int count = 0;
 
         // 월만큼 다 더하기
-        for(int i=0; i<x; i++)
+        for (int i = 0; i < x; i++)
             count += month[i];
 
         // 일수 더하기
         count += y;
 
-        System.out.println(day[count%7]);
+        System.out.println(day[count % 7]);
     }
 }

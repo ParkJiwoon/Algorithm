@@ -3,7 +3,9 @@ import java.io.*;
 // https://www.acmicpc.net/problem/1670
 
 class Main {
-    static int stoi(String s) { return Integer.parseInt(s); }
+    static int stoi(String s) {
+        return Integer.parseInt(s);
+    }
 
     public static void main(String[] args) throws Exception {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -19,9 +21,9 @@ class Main {
          * 점 하나를 기준으로 다른 점과 하나씩 연결 한 후에 갈라진 점의 경우의 수를 세서 곱한다
          * 주의할 점은 점은 항상 짝수개씩 갈라져야 하기 때문에 2씩 증가해야한다.
          */
-        for(int i=4; i<=n; i += 2) {
-            for(int j=0; j<=i-2; j += 2) {
-                dp[i] += dp[j] * dp[i-j-2];
+        for (int i = 4; i <= n; i += 2) {
+            for (int j = 0; j <= i - 2; j += 2) {
+                dp[i] += dp[j] * dp[i - j - 2];
                 dp[i] %= div;
             }
         }

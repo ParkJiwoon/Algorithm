@@ -4,7 +4,9 @@ import java.io.*;
 // https://www.acmicpc.net/problem/14890
 
 class Main {
-    static int stoi(String s) { return Integer.parseInt(s); }
+    static int stoi(String s) {
+        return Integer.parseInt(s);
+    }
 
     static int n;
     static int L;
@@ -20,62 +22,62 @@ class Main {
         L = stoi(st.nextToken());
         map = new int[n][n];
 
-        for(int i=0; i<n; i++) {
+        for (int i = 0; i < n; i++) {
             st = new StringTokenizer(br.readLine());
-            for(int j=0; j<n; j++)
+            for (int j = 0; j < n; j++)
                 map[i][j] = stoi(st.nextToken());
         }
 
-        // Ç®ÀÌ ½ÃÀÛ
-        for(int i=0; i<n; i++) {
-            if(canGo(i, 0, 0)) 
+        // Ç®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+        for (int i = 0; i < n; i++) {
+            if (canGo(i, 0, 0))
                 count++;
-            
-            if(canGo(0, i, 1)) 
+
+            if (canGo(0, i, 1))
                 count++;
         }
 
         System.out.println(count);
     }
 
-    // ÇÑ ÁÙÀÌ °æ»ç·ÎÀÎÁö È®ÀÎ d = 0 ÀÌ¸é Çà°Ë»ç, d = 1 ÀÌ¸é ¿­°Ë»ç
+    // ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ È®ï¿½ï¿½ d = 0 ï¿½Ì¸ï¿½ ï¿½ï¿½Ë»ï¿½, d = 1 ï¿½Ì¸ï¿½ ï¿½ï¿½ï¿½Ë»ï¿½
     static boolean canGo(int x, int y, int d) {
         int[] height = new int[n];
-        boolean[] visited = new boolean[n];     // °æ»ç·Î°¡ ÀÌ¹Ì ³õ¿©ÀÖ´ÂÁö Ã¼Å©
+        boolean[] visited = new boolean[n];     // ï¿½ï¿½ï¿½Î°ï¿½ ï¿½Ì¹ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ö´ï¿½ï¿½ï¿½ Ã¼Å©
 
-        // ¾Ë¾Æº¸±â ½±°Ô height ¹è¿­¿¡ ¿Å±â±â
-        for(int i=0; i<n; i++) {
-            if(d == 0)
-                height[i] = map[x][y+i];
+        // ï¿½Ë¾Æºï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ height ï¿½è¿­ï¿½ï¿½ ï¿½Å±ï¿½ï¿½
+        for (int i = 0; i < n; i++) {
+            if (d == 0)
+                height[i] = map[x][y + i];
             else
-                height[i] = map[x+i][y];
+                height[i] = map[x + i][y];
         }
 
-        for(int i=0; i<n-1; i++) {
-            // ³ôÀÌ°¡ °°À¸¸é ÆÐ½º
-            if(height[i] == height[i+1])
+        for (int i = 0; i < n - 1; i++) {
+            // ï¿½ï¿½ï¿½Ì°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ð½ï¿½
+            if (height[i] == height[i + 1])
                 continue;
-            
-            if(Math.abs(height[i] - height[i+1]) > 1)
+
+            if (Math.abs(height[i] - height[i + 1]) > 1)
                 return false;
 
-            // ³»·Á°¡¾ßµÇ´Â °æ¿ì
-            if(height[i] - 1 == height[i+1]) {
-                for(int j=i+1; j<=i+L; j++) {
-                    // j°¡ ¹üÀ§¸¦ ¹þ¾î³ª°Å³ª ³ôÀÌ°¡ ´Ù¸£°Å³ª ÀÌ¹Ì °æ»ç·Î°¡ ÀÖ´Â °æ¿ì
-                    if(j >= n || height[i+1] != height[j] || visited[j] == true)   
+            // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ßµÇ´ï¿½ ï¿½ï¿½ï¿½
+            if (height[i] - 1 == height[i + 1]) {
+                for (int j = i + 1; j <= i + L; j++) {
+                    // jï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½î³ªï¿½Å³ï¿½ ï¿½ï¿½ï¿½Ì°ï¿½ ï¿½Ù¸ï¿½ï¿½Å³ï¿½ ï¿½Ì¹ï¿½ ï¿½ï¿½ï¿½Î°ï¿½ ï¿½Ö´ï¿½ ï¿½ï¿½ï¿½
+                    if (j >= n || height[i + 1] != height[j] || visited[j] == true)
                         return false;
                     visited[j] = true;
                 }
             }
-            // ¿Ã¶ó°¡¾ßµÇ´Â °æ¿ì
-            else if(height[i] + 1 == height[i+1]) {
-                for(int j=i; j>i-L;j--) {
-                    if(j < 0 || height[i] != height[j] || visited[j] == true)
+            // ï¿½Ã¶ó°¡¾ßµÇ´ï¿½ ï¿½ï¿½ï¿½
+            else if (height[i] + 1 == height[i + 1]) {
+                for (int j = i; j > i - L; j--) {
+                    if (j < 0 || height[i] != height[j] || visited[j] == true)
                         return false;
                     visited[j] = true;
                 }
-            }            
+            }
         }
 
         return true;

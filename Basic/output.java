@@ -12,33 +12,33 @@ class Main {
         // System.out.print TEST
         start = System.currentTimeMillis();
 
-        for(int i=0; i<100000; i++)
+        for (int i = 0; i < 100000; i++)
             System.out.print(i);
 
         end = System.currentTimeMillis();
-        double sysTime = (end-start) / 1000.0;
+        double sysTime = (end - start) / 1000.0;
 
 
         // bw.write TEST
         start = System.currentTimeMillis();
 
-        for(int i=0; i<100000; i++)
+        for (int i = 0; i < 100000; i++)
             bw.write(i + "");
 
         bw.flush();
         end = System.currentTimeMillis();
-        double bwTime = (end-start) / 1000.0;
+        double bwTime = (end - start) / 1000.0;
 
 
         // sb.append TEST
         start = System.currentTimeMillis();
 
-        for(int i=0; i<100000; i++)
+        for (int i = 0; i < 100000; i++)
             sb.append(i);
 
         System.out.print(sb);
         end = System.currentTimeMillis();
-        double sbTime = (end-start) / 1000.0;
+        double sbTime = (end - start) / 1000.0;
 
         // Result
         System.out.println();

@@ -15,7 +15,7 @@ public class PowerSet {
     }
 
     static void powerSet(int[] arr, boolean[] visited, int n, int idx) {
-        if(idx == n) {
+        if (idx == n) {
             print(arr, visited, n);
             return;
         }
@@ -28,9 +28,9 @@ public class PowerSet {
     }
 
     static void bit(int[] arr, int n) {
-        for(int i=0; i < 1<<n; i++) {
-            for(int j=0; j<n; j++) {
-                if((i & 1<<j) != 0) 
+        for (int i = 0; i < 1 << n; i++) {
+            for (int j = 0; j < n; j++) {
+                if ((i & 1 << j) != 0)
                     System.out.print(arr[j] + " ");
             }
             System.out.println();
@@ -38,8 +38,8 @@ public class PowerSet {
     }
 
     static void print(int[] arr, boolean[] visited, int n) {
-        for(int i=0; i<n; i++) {
-            if(visited[i] == true)
+        for (int i = 0; i < n; i++) {
+            if (visited[i] == true)
                 System.out.print(arr[i] + " ");
         }
         System.out.println();

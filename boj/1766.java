@@ -14,12 +14,12 @@ class Main {
         n = Integer.parseInt(st.nextToken());
         m = Integer.parseInt(st.nextToken());
         List<List<Integer>> list = new ArrayList<List<Integer>>();
-        int[] indegree = new int[n+1];
+        int[] indegree = new int[n + 1];
 
-        for(int i=0; i<n+1; i++)
+        for (int i = 0; i < n + 1; i++)
             list.add(new ArrayList<Integer>());
 
-        for(int i=0; i<m; i++) {
+        for (int i = 0; i < m; i++) {
             st = new StringTokenizer(br.readLine());
 
             // v1 -> v2
@@ -30,25 +30,25 @@ class Main {
             indegree[v2]++;
         }
 
-        topologicalSort(indegree, list);        
+        topologicalSort(indegree, list);
     }
 
     // 쉬운 문제를 먼저 풀기 위해서 우선순위 큐에 담음
     static void topologicalSort(int[] indegree, List<List<Integer>> list) {
         PriorityQueue<Integer> pq = new PriorityQueue<Integer>();
 
-        for(int i=1; i<=n; i++) {
-            if(indegree[i] == 0)
+        for (int i = 1; i <= n; i++) {
+            if (indegree[i] == 0)
                 pq.offer(i);
         }
 
-        while(!pq.isEmpty()) {
+        while (!pq.isEmpty()) {
             int node = pq.poll();
 
-            for(Integer i : list.get(node)) {
+            for (Integer i : list.get(node)) {
                 indegree[i]--;
 
-                if(indegree[i] == 0)
+                if (indegree[i] == 0)
                     pq.offer(i);
             }
 

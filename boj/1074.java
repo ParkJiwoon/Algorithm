@@ -4,7 +4,9 @@ import java.io.*;
 // https://www.acmicpc.net/problem/1074
 
 class Main {
-    static int stoi(String s) { return Integer.parseInt(s);}
+    static int stoi(String s) {
+        return Integer.parseInt(s);
+    }
 
     static int N;
     static int r;
@@ -28,20 +30,20 @@ class Main {
          * 사각형 절반으로 나눠서 각 사분면으로 계산
          * n이 1이 된다는 것은 x, y 좌표가 r, c랑 같아진다는 것
          */
-        while(n > 0) {
+        while (n > 0) {
             n /= 2;
 
             // 2사분면 (왼 위)
-            if(r < x+n && c < y+n) {
+            if (r < x + n && c < y + n) {
                 count += n * n * 0;
             }
             // 1사분면 (오른 위)
-            else if(r < x+n) {
+            else if (r < x + n) {
                 count += n * n * 1;
                 y += n;
             }
             // 3사분면 (왼 아래)
-            else if(c < y+n) {
+            else if (c < y + n) {
                 count += n * n * 2;
                 x += n;
             }
@@ -52,7 +54,7 @@ class Main {
                 y += n;
             }
 
-            if(n == 1) {
+            if (n == 1) {
                 System.out.println(count);
                 break;
             }
@@ -61,7 +63,7 @@ class Main {
 
     static int getSize(int n) {
         int result = 1;
-        for(int i=0; i<n; i++)
+        for (int i = 0; i < n; i++)
             result *= 2;
         return result;
     }

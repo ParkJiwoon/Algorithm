@@ -4,7 +4,9 @@ import java.io.*;
 // https://www.acmicpc.net/problem/1517
 
 class Main {
-    static int stoi(String s) { return Integer.parseInt(s);}
+    static int stoi(String s) {
+        return Integer.parseInt(s);
+    }
 
     static long swapCount = 0;
     static long[] sorted;
@@ -18,19 +20,19 @@ class Main {
         long[] arr = new long[n];
 
         st = new StringTokenizer(br.readLine());
-        for(int i=0; i<n; i++)
+        for (int i = 0; i < n; i++)
             arr[i] = stoi(st.nextToken());
 
-        mergeSort(arr, 0, n-1);
-        
+        mergeSort(arr, 0, n - 1);
+
         System.out.println(swapCount);
     }
 
     static void mergeSort(long[] arr, int low, int high) {
-        if(low < high) {
-            int mid = (low+high)/2;
+        if (low < high) {
+            int mid = (low + high) / 2;
             mergeSort(arr, low, mid);
-            mergeSort(arr, mid+1, high);
+            mergeSort(arr, mid + 1, high);
             merge(arr, low, mid, high);
         }
     }
@@ -40,8 +42,8 @@ class Main {
         int j = mid + 1;
         int index = low;
 
-        while(i <= mid && j <= high) {
-            if(arr[i] <= arr[j])
+        while (i <= mid && j <= high) {
+            if (arr[i] <= arr[j])
                 sorted[index++] = arr[i++];
             else {
                 sorted[index++] = arr[j++];
@@ -49,13 +51,13 @@ class Main {
             }
         }
 
-        while(i <= mid) 
+        while (i <= mid)
             sorted[index++] = arr[i++];
-        
-        while(j <= high)
+
+        while (j <= high)
             sorted[index++] = arr[j++];
 
-        for(int k=low; k<=high; k++)
+        for (int k = low; k <= high; k++)
             arr[k] = sorted[k];
     }
 }

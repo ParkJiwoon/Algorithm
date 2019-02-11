@@ -59,7 +59,9 @@ class Main {
     static int[] dx = {0, 0, -1, 1};    // 동서북남
     static int[] dy = {1, -1, 0, 0};
 
-    static int stoi(String s) { return Integer.parseInt(s);}
+    static int stoi(String s) {
+        return Integer.parseInt(s);
+    }
 
     public static void main(String[] args) throws Exception {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -73,15 +75,15 @@ class Main {
         map = new int[n][m];
         dir = new int[k];
 
-        for(int i=0; i<n; i++) {
+        for (int i = 0; i < n; i++) {
             st = new StringTokenizer(br.readLine());
-            for(int j=0; j<m; j++) {
+            for (int j = 0; j < m; j++) {
                 map[i][j] = stoi(st.nextToken());
             }
         }
 
         st = new StringTokenizer(br.readLine());
-        for(int i=0; i<k; i++) {
+        for (int i = 0; i < k; i++) {
             dir[i] = stoi(st.nextToken());
         }
 
@@ -92,24 +94,24 @@ class Main {
         Dice dice = new Dice();
         int nx, ny;
 
-        for(int i=0; i<k; i++) {
-            int direction = dir[i] - 1 ;
+        for (int i = 0; i < k; i++) {
+            int direction = dir[i] - 1;
             nx = x + dx[direction];
             ny = y + dy[direction];
 
-            if(0 <= nx && nx < n && 0 <= ny && ny < m) {
+            if (0 <= nx && nx < n && 0 <= ny && ny < m) {
                 // 동쪽은 0, 서쪽은 1, 북쪽은 2, 남쪽은 3
-                if(direction == 0) 
+                if (direction == 0)
                     dice.moveEast();
-                else if(direction == 1)
+                else if (direction == 1)
                     dice.moveWest();
-                else if(direction == 2)
+                else if (direction == 2)
                     dice.moveNorth();
-                else if(direction == 3)
+                else if (direction == 3)
                     dice.moveSouth();
 
                 // 숫자 복사
-                if(map[nx][ny] == 0) 
+                if (map[nx][ny] == 0)
                     map[nx][ny] = dice.bottom;
                 else {
                     dice.bottom = map[nx][ny];

@@ -7,6 +7,7 @@
 public class Combination2 {
     static int n = 3;
     static int m = 3;
+
     public static void main(String[] args) {
         int[][] map = new int[n][m];
 
@@ -15,26 +16,26 @@ public class Combination2 {
     }
 
     static void comb(int[][] map, int start, int depth) {
-        if(depth == 3) {
+        if (depth == 3) {
             print(map);
             return;
         }
 
-        for(int i=start; i<n*m; i++) {
-            int x = i/3;
-            int y = i%3;
-            
-            if(map[x][y] == 0) {
+        for (int i = start; i < n * m; i++) {
+            int x = i / 3;
+            int y = i % 3;
+
+            if (map[x][y] == 0) {
                 map[x][y] = 1;
-                comb(map, i+1, depth+1);
+                comb(map, i + 1, depth + 1);
                 map[x][y] = 0;
             }
         }
     }
 
     static void print(int[][] map) {
-        for(int i=0; i<n; i++) {
-            for(int j=0; j<m; j++) {
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < m; j++) {
                 System.out.print(map[i][j] + " ");
             }
             System.out.println();

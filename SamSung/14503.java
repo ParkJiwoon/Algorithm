@@ -4,7 +4,9 @@ import java.io.*;
 // https://www.acmicpc.net/problem/14503
 
 class Main {
-    static int stoi(String s) { return Integer.parseInt(s);}
+    static int stoi(String s) {
+        return Integer.parseInt(s);
+    }
 
     static int n, m;
     static int[][] map;
@@ -15,8 +17,8 @@ class Main {
 
     public static void main(String[] args) throws Exception {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        StringTokenizer st;       
-        
+        StringTokenizer st;
+
         st = new StringTokenizer(br.readLine());
         n = stoi(st.nextToken());
         m = stoi(st.nextToken());
@@ -27,9 +29,9 @@ class Main {
         c = stoi(st.nextToken());
         d = stoi(st.nextToken());
 
-        for(int i=0; i<n; i++) {
+        for (int i = 0; i < n; i++) {
             st = new StringTokenizer(br.readLine());
-            for(int j=0; j<m; j++)
+            for (int j = 0; j < m; j++)
                 map[i][j] = stoi(st.nextToken());
         }
 
@@ -43,14 +45,14 @@ class Main {
          * 2 : 청소한 공간
          */
 
-        while(true) {     
+        while (true) {
             // 네 방향 모두 청소가 되어있거나 이미 벽이면 후진 후 2번으로
-            if(turnCount == 4) {
+            if (turnCount == 4) {
                 int backX = r - dx[d];
                 int backY = c - dy[d];
 
                 // 벽이면 종료
-                if(map[backX][backY] == 1) {
+                if (map[backX][backY] == 1) {
                     System.out.println(getCleanArea());
                     return;
                 }
@@ -60,17 +62,17 @@ class Main {
             }
 
             // 1. 현재 위치 청소
-            if(map[r][c] == 0)
+            if (map[r][c] == 0)
                 map[r][c] = 2;
 
             // 2. 현재 방향을 기준으로 왼쪽방향 확인
-            int ld = (d+3)%4;
+            int ld = (d + 3) % 4;
             int nx = r + dx[ld];
             int ny = c + dy[ld];
 
             // 3. 청소공간 있음 -> 한칸 전진 하고 1번으로
             // 4. 청소공간 없음 -> 그 방향으로 회전하고 2번으로
-            if(map[nx][ny] == 0)
+            if (map[nx][ny] == 0)
                 setRobot(nx, ny, ld, 0);
             else
                 setRobot(r, c, ld, turnCount + 1);
@@ -87,9 +89,9 @@ class Main {
 
     static int getCleanArea() {
         int result = 0;
-        for(int i=0; i<n; i++) {
-            for(int j=0; j<m; j++) {
-                if(map[i][j] == 2)
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < m; j++) {
+                if (map[i][j] == 2)
                     result++;
             }
         }

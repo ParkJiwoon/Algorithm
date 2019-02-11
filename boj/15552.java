@@ -10,11 +10,11 @@ class Main {
         StringTokenizer st;
         int TC = Integer.parseInt(br.readLine());
 
-        for(int i=0; i<TC; i++) {
+        for (int i = 0; i < TC; i++) {
             st = new StringTokenizer(br.readLine());
             int A = Integer.parseInt(st.nextToken());
             int B = Integer.parseInt(st.nextToken());
-            int sum = A+B;
+            int sum = A + B;
 
             bw.write(sum + "\n");
         }

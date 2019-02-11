@@ -7,16 +7,16 @@ import java.io.*;
 class Main {
     public static void main(String args[]) throws Exception {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        
+
         String str = br.readLine();
         int N = str.length();
 
-        while(true) {
-            if(N <= 10) {
+        while (true) {
+            if (N <= 10) {
                 System.out.println(str);
                 break;
             } else {
-                System.out.println(str.substring(0,10));
+                System.out.println(str.substring(0, 10));
                 str = str.substring(10, N);
                 N -= 10;
             }

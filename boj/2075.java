@@ -12,17 +12,17 @@ class Main {
         PriorityQueue<Integer> pq = new PriorityQueue<Integer>();
 
         st = new StringTokenizer(br.readLine());
-        for(int i=0; i<n; i++) {
+        for (int i = 0; i < n; i++) {
             int temp = Integer.parseInt(st.nextToken());
             pq.offer(temp);
         }
 
-        for(int i=1; i<n; i++) {
+        for (int i = 1; i < n; i++) {
             st = new StringTokenizer(br.readLine());
-            for(int j=0; j<n; j++) {
+            for (int j = 0; j < n; j++) {
                 int temp = Integer.parseInt(st.nextToken());
 
-                if(pq.peek() < temp) {  
+                if (pq.peek() < temp) {
                     pq.poll();
                     pq.offer(temp);
                 }

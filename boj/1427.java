@@ -11,13 +11,13 @@ class Main {
         int size = N.length();
         Integer[] arr = new Integer[size];
 
-        for(int i=0; i<size; i++) {
+        for (int i = 0; i < size; i++) {
             arr[i] = N.charAt(i) - '0';
         }
 
         Arrays.sort(arr, Collections.reverseOrder());
 
-        for(int i=0; i<size; i++) {
+        for (int i = 0; i < size; i++) {
             System.out.print(arr[i]);
         }
     }

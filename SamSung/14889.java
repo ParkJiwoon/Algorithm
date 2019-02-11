@@ -4,7 +4,9 @@ import java.io.*;
 // https://www.acmicpc.net/problem/14889
 
 class Main {
-    static int stoi(String s) { return Integer.parseInt(s); }
+    static int stoi(String s) {
+        return Integer.parseInt(s);
+    }
 
     static int n;
     static boolean[] visited;
@@ -16,12 +18,12 @@ class Main {
         StringTokenizer st;
 
         n = stoi(br.readLine());
-        visited = new boolean[n+1];
-        arr = new int[n+1][n+1];
+        visited = new boolean[n + 1];
+        arr = new int[n + 1][n + 1];
 
-        for(int i=1; i<n+1; i++) {
+        for (int i = 1; i < n + 1; i++) {
             st = new StringTokenizer(br.readLine());
-            for(int j=1; j<n+1; j++) {
+            for (int j = 1; j < n + 1; j++) {
                 arr[i][j] = stoi(st.nextToken());
             }
         }
@@ -32,15 +34,15 @@ class Main {
 
     // 모든 팀의 조합 구하기
     static void comb(int start, int depth) {
-        if(depth == n/2) {
+        if (depth == n / 2) {
             min = Math.min(min, getAbilityDifference());
             return;
         }
 
-        for(int i=start; i<n+1; i++) {
-            if(visited[i] != true) {
+        for (int i = start; i < n + 1; i++) {
+            if (visited[i] != true) {
                 visited[i] = true;
-                comb(i+1, depth+1);
+                comb(i + 1, depth + 1);
                 visited[i] = false;
             }
         }
@@ -51,14 +53,14 @@ class Main {
         int sumStart = 0;
         int sumLink = 0;
 
-        for(int i=1; i<n+1; i++) {
-            for(int j=1; j<n+1; j++) {
+        for (int i = 1; i < n + 1; i++) {
+            for (int j = 1; j < n + 1; j++) {
                 // true 면 스타트팀
-                if(visited[i] && visited[j])
+                if (visited[i] && visited[j])
                     sumStart += arr[i][j];
 
                 // false 면 링크팀
-                if(visited[i] != true && visited[j] != true)
+                if (visited[i] != true && visited[j] != true)
                     sumLink += arr[i][j];
             }
         }
