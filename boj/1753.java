@@ -38,10 +38,9 @@ class Main {
 
         int start = stoi(br.readLine());
 
-        list.add(new ArrayList<Node>());
         // init array
         Arrays.fill(dist, INF);
-        for(int i=1; i<=v; i++) {
+        for(int i=0; i<=v; i++) {
             list.add(new ArrayList<Node>());
         }
         
