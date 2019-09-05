@@ -8,9 +8,11 @@ class Main {
 
     static final int INF = 987654321;
     static int N, M, X;
-    static int[][] arr, rev;
     static int[] dist, revDist;
+    static List<List<Node>> list, revList;
 
+    // 마을의 번호와 시작점으로부터의 거리를 저장하는 Node 클래스
+    // 거리가 짧은 순으로 자동으로 정렬되게 comparable 를 오버라이드
     static class Node implements Comparable<Node> {
         int index;
         int distance;
@@ -36,9 +38,10 @@ class Main {
         X = stoi(st.nextToken());
         dist = new int[N+1];
         revDist = new int[N+1];
-        arr = new int[N+1][N+1];
-        rev = new int[N+1][N+1];
+        list = new ArrayList<List<Node>>();
+        revList = new ArrayList<List<Node>>();
 
+        // 각 거리 초기화
         init();
 
         for(int i=1; i<=M; i++) {
@@ -46,13 +49,20 @@ class Main {
             
             int v1 = stoi(st.nextToken());
             int v2 = stoi(st.nextToken());
+            int dist = stoi(st.nextToken());
 
-            arr[v1][v2] = rev[v2][v1] = stoi(st.nextToken());
+            list.get(v1).add(new Node(v2, dist));
+            revList.get(v2).add(new Node(v1, dist));
         }
 
         // solve
-        dijkstra(arr, dist, X);
-        dijkstra(rev, revDist, X);
+        // 다익스트라 2번을 이용해서 구할 수 있다
+        // 주어진 간선에서 X번 마을에서 각 마을로 가는 최단 경로를 구하고
+        dijkstra(list, dist, X);
+
+        // 간선을 뒤집은 다음에 X번 마을에서 각 마을로 가는 최단 경로를 구하면
+        // 각 마을에서 X번 마을로 가는 최단 경로를 구할 수 있음
+        dijkstra(revList, revDist, X);
 
         // answer
         int max = -1;
@@ -62,15 +72,16 @@ class Main {
     }
 
     static void init() {
-        for(int i=1; i<=N; i++) {
-            dist[i] = revDist[i] = INF;
+        Arrays.fill(dist, INF);
+        Arrays.fill(revDist, INF);
 
-            for(int j=1; j<=N; j++)
-                arr[i][j] = rev[i][j] = INF;
+        for(int i=0; i<=N; i++) {
+            list.add(new ArrayList<Node>());
+            revList.add(new ArrayList<Node>());
         }
     }
 
-    static void dijkstra(int[][] edge, int[] distance, int start) {
+    static void dijkstra(List<List<Node>> list, int[] distance, int start) {
         boolean[] visited = new boolean[N+1];
         PriorityQueue<Node> pq = new PriorityQueue<Node>();
 
@@ -80,13 +91,15 @@ class Main {
         while(!pq.isEmpty()) {
             int idx = pq.poll().index;
 
+            // 방문한 곳은 또 방문할 필요 없음
             if(visited[idx]) continue;
             visited[idx] = true;
 
-            for(int i=1; i<=N; i++) {
-                if(distance[i] > distance[idx] + edge[idx][i]) {
-                    distance[i] = distance[idx] + edge[idx][i];
-                    pq.add(new Node(i, distance[i]));
+            for(Node node : list.get(idx)) {
+                // node.index 까지의 거리는 (시작점->idx 거리 + idx->node.index 거리) 중 더 작은 것
+                if(distance[node.index] > distance[idx] + node.distance) {
+                    distance[node.index] = distance[idx] + node.distance;
+                    pq.add(new Node(node.index, distance[node.index]));
                 }
             }
         }
