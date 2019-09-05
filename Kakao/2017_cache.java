@@ -15,15 +15,14 @@ class Solution {
           String city = cities[i].toLowerCase();
           
           if(cache.contains(city)) {
-              // 캐시 안에 이미 값이 있으면
               cache.remove(city);
               cache.add(city);
               answer += 1;
           } else {
-              // 캐시 안에 값이 없으면
-              if(cache.size() >= cacheSize) 
-                  cache.remove(0);       
-
+              // 캐시 사이즈가 넘치면 첫번째 원소를 빼준다
+              if(cache.size() >= cacheSize) {
+                cache.remove(0);       
+              }
               cache.add(city);
               answer += 5;
           }             
