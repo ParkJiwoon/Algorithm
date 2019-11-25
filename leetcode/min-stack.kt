@@ -1,42 +1,62 @@
-// https://leetcode.com/problems/min-stack/submissions/
+/**
+ * 문제: https://leetcode.com/problems/min-stack
+ * 풀이: https://bcp0109.tistory.com/128
+ */
 
+// Using PriorityQueue
 import java.util.*
 
 class MinStack() {
-
-    /** initialize your data structure here. */
-    private var min: Int = Int.MAX_VALUE
-    val stack = Stack<Int>()
+    val normal = Stack<Int>()
+    val minimum = PriorityQueue<Int>()
 
     fun push(x: Int) {
-        if (x <= min) {
-            stack.push(min)
-            min = x
-        }
-        stack.push(x)
+        normal.push(x)
+        minimum.add(x)
     }
 
     fun pop() {
-        if (stack.pop() == min) {
-            min = stack.pop()
+        minimum.remove(normal.pop())
+    }
+
+    fun top(): Int {
+        return normal.peek()
+    }
+
+    fun getMin(): Int {
+        return minimum.peek()
+    }
+}
+
+
+
+// O(1..n-1) space
+import java.util.*
+
+class MinStack() {
+    val normal = Stack<Int>()
+    var minimum = Int.MAX_VALUE
+
+    fun push(x: Int) {
+        if (x <= minimum) {
+            normal.push(minimum)
+            minimum = x
+        }
+        
+        normal.push(x)
+    }
+
+    fun pop() {
+        if (normal.pop() == minimum) {
+            minimum = normal.pop()
         }
     }
 
     fun top(): Int {
-        return stack.peek()
+        return normal.peek()
     }
 
     fun getMin(): Int {
-        return min
+        return minimum
     }
-
 }
-
-/**
- * Your MinStack object will be instantiated and called as such:
- * var obj = MinStack()
- * obj.push(x)
- * obj.pop()
- * var param_3 = obj.top()
- * var param_4 = obj.getMin()
- */
