@@ -9,7 +9,7 @@
 # Solution
 `ArrayList<Integer>`와 `HashMap<Integer, Integer>`을 이용하여 만들 수 있습니다.
 
-처음에는 `HashSet<Integer>`을 사용하려고 했는데 `getRandom()` 함수에서 값을 꺼낼 때 반복문을 돌아야 한다는 단점이 있었습니다.
+처음에는 `HashSet<Integer>`을 사용하려고 했는데 `getRandom()` 함수에서 값을 꺼낼 때 반복문(iterator)을 사용하기 때문에 `O(n)` 의 시간이 걸렸습니다.
 
 그래서 index-value 를 key-value 로 하고 value-index 를 key-value 로 하는 HashMap 두개를 이용해서 풀었습니다.
 
@@ -23,7 +23,7 @@
 
 다음 그림과 같이 List 값이 들어있다고 가정합니다.
 
-![example1](./image/insert-delete-getrandom-o1_1.jpg)
+![example1](./image/insert-delete-getrandom-o1_1.png)
 
 여기서 `remove(9)` 를 호출하면 두번째 index 값이 지워져야 합니다.
 
@@ -31,7 +31,7 @@
 
 list 내의 index 는 순차적으로 모두 존재함이 보장됩니다.
 
-![example2](./image/insert-delete-getrandom-o1_2.jpg)
+![example2](./image/insert-delete-getrandom-o1_2.png)
 <br>
 <br>
 
