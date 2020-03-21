@@ -6,7 +6,7 @@
 
 예를 들어 `[1, 2, 3]` 이라는 3 개의 배열에서 2 개의 숫자를 뽑는 경우는
 
-```
+```html
 [1, 2]
 [1, 3]
 [2, 1]
@@ -39,14 +39,14 @@
 
 예를 들어 3개의 숫자 중 3개의 값을 뽑는 순열을 만들 때
 
-```
+```html
 [3, 1, 2]
 [3, 2, 1]
 ```
 
 위 순서대로 나와야 하는데
 
-```
+```html
 [3, 2, 1]
 [3, 1, 2]
 ```
@@ -85,7 +85,7 @@ static void swap(int[] arr, int depth, int i) {
 
 ### Result
 
-```
+```html
 1 2 3
 1 3 2
 2 1 3
@@ -155,7 +155,7 @@ static void perm(int[] arr, int[] output, boolean[] visited, int depth, int n, i
 
 ### Result
 
-```text
+```html
 1 2 3
 1 3 2
 2 1 3
