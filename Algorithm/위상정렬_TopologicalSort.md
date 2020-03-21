@@ -41,6 +41,8 @@
 
 <br>
 
+---
+
 2. `Queue` 에서 1을 빼주며 노드 1 에게 가리켜지는 다른 노드들의 `indegree` 값을 1 씩 감소시킵니다.
 
     사용한 노드와 간선은 지운다고 생각하면 이해하기 쉽습니다.
@@ -50,6 +52,8 @@
 ![2](./image/topological_srot_2.png)
 
 <br>
+
+---
 
 3. 그다음은 `Queue` 에서 순서대로 노드 2를 꺼냅니다.
 
@@ -63,11 +67,15 @@
 
 <br>
 
+---
+
 4. `Queue.pop(3) && Result.add(3)`
 
 ![4](./image/topological_srot_4.png)
 
 <br>
+
+---
 
 5. `Queue.pop(5) && Result.add(5)`
 
@@ -75,17 +83,23 @@
 
 <br>
 
+---
+
 6. `Queue.pop(7) && Result.add(7)`
 
 ![6](./image/topological_srot_6.png)
 
 <br>
 
+---
+
 7. `Queue.pop(4) && Result.add(4)`
 
 ![7](./image/topological_srot_7.png)
 
 <br>
+
+---
 
 8. `Queue.pop(6) && Result.add(6)`
 
@@ -110,6 +124,7 @@
 
 이 순서는 어떤 정렬 결과가 나오더라도 변하지 않을겁니다.
 
+<br><br>
 
 ## Java Code
 ```java
