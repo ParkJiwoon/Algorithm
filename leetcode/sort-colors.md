@@ -2,6 +2,8 @@
 
 - [문제 링크](https://leetcode.com/problems/sort-colors/)
 
+<br>
+
 난이도 *Medium* 문제입니다.
 
 빨간색, 파란색, 하얀색이 각각 0, 1, 2 로 주어지고 이 숫자들을 정렬하는 문제입니다.
