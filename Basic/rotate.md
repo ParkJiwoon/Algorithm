@@ -200,7 +200,7 @@ class Main {
 
 <br>
 
-```
+```html
 출력
 
 1 0 0 
