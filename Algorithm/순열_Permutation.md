@@ -166,7 +166,7 @@ static void perm(int[] arr, int[] output, boolean[] visited, int depth, int n, i
 
 <br><br>
 
-## 전제 소스코드
+## 전체 소스코드
 
 ```java
 /**
