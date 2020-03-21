@@ -1,5 +1,5 @@
 # Problem
-- 문제 링크: https://leetcode.com/problems/remove-duplicates-from-sorted-array/
+- [문제 링크](https://leetcode.com/problems/remove-duplicates-from-sorted-array/)
 
 <br>
 
