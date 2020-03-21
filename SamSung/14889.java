@@ -1,8 +1,6 @@
 import java.util.*;
 import java.io.*;
 
-// https://www.acmicpc.net/problem/14889
-
 class Main {
     static int stoi(String s) {
         return Integer.parseInt(s);
@@ -56,12 +54,14 @@ class Main {
         for (int i = 1; i < n + 1; i++) {
             for (int j = 1; j < n + 1; j++) {
                 // true 면 스타트팀
-                if (visited[i] && visited[j])
+                if (visited[i] && visited[j]) {
                     sumStart += arr[i][j];
+                }
 
                 // false 면 링크팀
-                if (visited[i] != true && visited[j] != true)
+                if (visited[i] != true && visited[j] != true) {
                     sumLink += arr[i][j];
+                }
             }
         }
 
