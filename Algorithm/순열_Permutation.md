@@ -100,7 +100,9 @@ static void swap(int[] arr, int depth, int i) {
 
 두번째로는 `visited` 배열을 이용하는 방법입니다.
 
-1 번과 달리 사전식으로 순열을 구현할 수 있습니다.
+1번과 달리 사전식으로 순열을 구현할 수 있습니다.
+
+<br>
 
 |변수|설명|
 |:--:|---|
@@ -108,7 +110,9 @@ static void swap(int[] arr, int depth, int i) {
 |`output`|뽑힌 `r` 개의 값|
 |`visited`|중복해서 뽑지 않기 위해 체크하는 값|
 
-이렇게 3개의 값이 포인트입니다.
+<br>
+
+위 3개의 값이 포인트입니다.
 
 DFS를 돌면서 모든 인덱스를 방문하여 `output` 에 값을 넣습니다.
 
