@@ -29,7 +29,11 @@
 
 `depth` 보다 인덱스가 큰 값들만 가지고 다시 `swap` 을 진행합니다.
 
+<br>
+
 ![example1](./image/perm_1.png)
+
+<br>
 
 간단하고 코드도 깔끔하게 나오지만 순열들의 순서가 보장되지 않습니다.
 
@@ -114,6 +118,8 @@ DFS를 돌면서 모든 인덱스를 방문하여 `output` 에 값을 넣습니�
 
 `depth` 의 값이 `r` 만큼 되면 `output` 에 들어있는 값을 출력하면 됩니다.
 
+<br>
+
 ![example2](./image/perm_2.png)
 
 <br>
@@ -160,67 +166,66 @@ static void perm(int[] arr, int[] output, boolean[] visited, int depth, int n, i
 
 ```java
 /**
- * 조합 : n 개 중에서 r 개 선택
- * 연습문제 : https://www.acmicpc.net/problem/2309
+ * 순열 : n 개 중에서 r 개를 순서있게 뽑기
+ * 시간복잡도: O(n!)
  */
 
-public class Combination {
+public class Permutation {
     public static void main(String[] args) {
-        int n = 4;
-        int[] arr = {1, 2, 3, 4};
+        int n = 3;
+        int[] arr = {1, 2, 3};
+        int[] output = new int[n];
         boolean[] visited = new boolean[n];
 
-        for (int i = 1; i <= n; i++) {
-            comb(arr, visited, 0, n, i);
-        }
-
+        perm(arr, output, visited, 0, n, 3);
         System.out.println();
-
-        for (int i = 1; i <= n; i++) {
-            combination(arr, visited, 0, n, i);
-        }
+        permutation(arr, 0, n, 3);
     }
 
-    // 백트래킹 사용
-    // 사용 예시 : combination(arr, visited, 0, n, r)
-    static void combination(int[] arr, boolean[] visited, int start, int n, int r) {
-        if (r == 0) {
-            print(arr, visited, n);
+    // 사전순으로 순열 구하기
+    // 사용 예시: perm(arr, output, visited, 0, n, 3);
+    static void perm(int[] arr, int[] output, boolean[] visited, int depth, int n, int r) {
+        if (depth == r) {
+            print(output, r);
             return;
-        } else {
-            for (int i = start; i < n; i++) {
+        }
+
+        for (int i = 0; i < n; i++) {
+            if (visited[i] != true) {
                 visited[i] = true;
-                combination(arr, visited, i + 1, n, r - 1);
+                output[depth] = arr[i];
+                perm(arr, output, visited, depth + 1, n, r);
                 visited[i] = false;
+                ;
             }
         }
     }
 
-    // 재귀 사용
-    // 사용 예시 : comb(arr, visited, 0, n, r)
-    static void comb(int[] arr, boolean[] visited, int depth, int n, int r) {
-        if (r == 0) {
-            print(arr, visited, n);
+    // 순열 구하기
+    // 사용 예시: permutation(arr, 0, n, 4);
+    static void permutation(int[] arr, int depth, int n, int r) {
+        if (depth == r) {
+            print(arr, r);
             return;
         }
-        
-        if (depth == n) {
-            return;
-        } else {
-            visited[depth] = true;
-            comb(arr, visited, depth + 1, n, r - 1);
 
-            visited[depth] = false;
-            comb(arr, visited, depth + 1, n, r);
+        for (int i = depth; i < n; i++) {
+            swap(arr, depth, i);
+            permutation(arr, depth + 1, n, r);
+            swap(arr, depth, i);
         }
     }
 
+    static void swap(int[] arr, int depth, int i) {
+        int temp = arr[depth];
+        arr[depth] = arr[i];
+        arr[i] = temp;
+    }
+
     // 배열 출력
-    static void print(int[] arr, boolean[] visited, int n) {
-        for (int i = 0; i < n; i++) {
-            if (visited[i] == true)
-                System.out.print(arr[i] + " ");
-        }
+    static void print(int[] arr, int r) {
+        for (int i = 0; i < r; i++)
+            System.out.print(arr[i] + " ");
         System.out.println();
     }
 }

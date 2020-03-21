@@ -1,8 +1,6 @@
-
 /**
  * 순열 : n 개 중에서 r 개를 순서있게 뽑기
  * 시간복잡도: O(n!)
- * 연습 문제 : https://www.acmicpc.net/problem/10974
  */
 
 public class Permutation {
