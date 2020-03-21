@@ -155,7 +155,7 @@ static void perm(int[] arr, int[] output, boolean[] visited, int depth, int n, i
 
 ### Result
 
-```
+```text
 1 2 3
 1 3 2
 2 1 3
