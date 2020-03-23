@@ -50,8 +50,6 @@ class Solution {
             result.add(new ArrayList(temp));
             return;
         }
-
-
         
         for (int i = index, len = candidates.length; i < len; i++) {
             if (candidates[i] <= target) {
