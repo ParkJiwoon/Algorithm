@@ -20,9 +20,7 @@
 
 `Map, Set, Array` 등을 활용하여 중복된 숫자를 체크하면서 `for` 문 한번만 돌면 됩니다.
 
-추가적인 메모리 없이 변수 하나로 풀려면 약간의 잡기술을 알아야 합니다.
-
-문제의 조건을 잘 봐야 합니다.
+변수 하나로 풀려면 문제의 조건을 잘 봐야 합니다.
 
 **중복된 숫자는 무조건 한쌍**입니다.
 
@@ -30,13 +28,13 @@
 
 `XOR` 은 두 비트가 같으면 0 다르면 1 을 리턴해줍니다.
 
-그리고 이 `XOR` 에는 **같은 숫자에 대해 `XOR` 연산을 두번하면 자기자신이 된다는 특징**이 있습니다.
+그리고 이 `XOR` 에는 **같은 숫자에 대해 `XOR` 연산을 두번하면 자기 자신이 된다는 특징**이 있습니다.
 
 위에 강조한 두 가지를 이용하여 쉽게 풀 수 있습니다.
 
 <br><br>
 
-# Java Code
+# Java Code 1
 
 ```java
 class Solution {
@@ -48,6 +46,23 @@ class Solution {
         }
         
         return result;
+    }
+}
+```
+
+<br><br>
+
+# Java Code 2
+
+```java
+// without using extra memory
+class Solution {
+    public int singleNumber(int[] nums) {
+        for (int i=1; i<nums.length; i++) {
+            nums[0] ^= nums[i];
+        }
+        
+        return nums[0];
     }
 }
 ```
