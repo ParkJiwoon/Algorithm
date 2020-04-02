@@ -33,7 +33,7 @@ These problems are carefully hand-picked from LeetCode's curated collection of f
 Date | Submission | Problem
 :--: | :--: | --
 1 | O | [Single Number](../single-number.md)
-2 | 
+2 | O | [Happy Number](../happy-number.md)
 3 | 
 4 |
 5 |
