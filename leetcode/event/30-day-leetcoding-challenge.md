@@ -34,7 +34,7 @@ Date | Submission | Problem
 :--: | :--: | --
 1 | O | [Single Number](../single-number.md)
 2 | O | [Happy Number](../happy-number.md)
-3 | 
+3 | O | [Maximum Subarray](../maximum-subarray.md)
 4 |
 5 |
 6 |
