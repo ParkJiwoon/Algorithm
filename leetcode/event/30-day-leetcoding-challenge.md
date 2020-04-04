@@ -35,7 +35,7 @@ Date | Submission | Problem
 1 | O | [Single Number](../single-number.md)
 2 | O | [Happy Number](../happy-number.md)
 3 | O | [Maximum Subarray](../maximum-subarray.md)
-4 |
+4 | O | [Move Zeroes](../move-zeroes.md)
 5 |
 6 |
 7 |
