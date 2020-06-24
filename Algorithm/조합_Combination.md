@@ -88,20 +88,27 @@ static void combination(int[] arr, boolean[] visited, int start, int n, int r) {
 ### Result
 
 ```html
+[4 개 중에서 1 개 뽑기]
 1
 2
 3
 4
+
+[4 개 중에서 2 개 뽑기]
 1 2
 1 3
 1 4
 2 3
 2 4
 3 4
+
+[4 개 중에서 3 개 뽑기]
 1 2 3
 1 2 4
 1 3 4
 2 3 4
+
+[4 개 중에서 4 개 뽑기]
 1 2 3 4
 ```
 
@@ -131,19 +138,20 @@ static void combination(int[] arr, boolean[] visited, int start, int n, int r) {
 // 재귀 사용
 // 사용 예시 : comb(arr, visited, 0, n, r)
 static void comb(int[] arr, boolean[] visited, int depth, int n, int r) {
-    if(r == 0) {
+    if (r == 0) {
         print(arr, visited, n);
         return;
     }
-    if(depth == n) {
+
+    if (depth == n) {
         return;
-    } else {
-        visited[depth] = true;
-        comb(arr, visited, depth + 1, n, r - 1);
- 
-        visited[depth] = false;
-        comb(arr, visited, depth + 1, n, r);
     }
+
+    visited[depth] = true;
+    comb(arr, visited, depth + 1, n, r - 1);
+
+    visited[depth] = false;
+    comb(arr, visited, depth + 1, n, r);
 }
 ```
 
@@ -152,20 +160,27 @@ static void comb(int[] arr, boolean[] visited, int depth, int n, int r) {
 ### Result
 
 ```html
+[4 개 중에서 1 개 뽑기]
 1
 2
 3
 4
+
+[4 개 중에서 2 개 뽑기]
 1 2
 1 3
 1 4
 2 3
 2 4
 3 4
+
+[4 개 중에서 3 개 뽑기]
 1 2 3
 1 2 4
 1 3 4
 2 3 4
+
+[4 개 중에서 4 개 뽑기]
 1 2 3 4
 ```
 
@@ -193,12 +208,12 @@ public class Combination {
         boolean[] visited = new boolean[n];
 
         for (int i = 1; i <= n; i++) {
+            System.out.println("\n" + n + " 개 중에서 " + i + " 개 뽑기");
             comb(arr, visited, 0, n, i);
         }
 
-        System.out.println();
-
         for (int i = 1; i <= n; i++) {
+            System.out.println("\n" + n + " 개 중에서 " + i + " 개 뽑기");
             combination(arr, visited, 0, n, i);
         }
     }
@@ -228,19 +243,21 @@ public class Combination {
         
         if (depth == n) {
             return;
-        } else {
-            visited[depth] = true;
-            comb(arr, visited, depth + 1, n, r - 1);
-            visited[depth] = false;
-            comb(arr, visited, depth + 1, n, r);
         }
+
+        visited[depth] = true;
+        comb(arr, visited, depth + 1, n, r - 1);
+
+        visited[depth] = false;
+        comb(arr, visited, depth + 1, n, r);
     }
 
     // 배열 출력
     static void print(int[] arr, boolean[] visited, int n) {
         for (int i = 0; i < n; i++) {
-            if (visited[i] == true)
+            if (visited[i]) {
                 System.out.print(arr[i] + " ");
+            }
         }
         System.out.println();
     }
