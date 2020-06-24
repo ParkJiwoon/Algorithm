@@ -64,7 +64,7 @@
 
 <br>
 
-### Java Code
+#### Java Code
 
 ```java
 // 백트래킹 사용
@@ -85,7 +85,7 @@ static void combination(int[] arr, boolean[] visited, int start, int n, int r) {
 
 <br>
 
-### Result
+#### Result
 
 ```html
 [4 개 중에서 1 개 뽑기]
@@ -132,7 +132,7 @@ static void combination(int[] arr, boolean[] visited, int start, int n, int r) {
 
 <br>
 
-### Java Code
+#### Java Code
 
 ```java
 // 재귀 사용
@@ -157,7 +157,7 @@ static void comb(int[] arr, boolean[] visited, int depth, int n, int r) {
 
 <br>
 
-### Result
+#### Result
 
 ```html
 [4 개 중에서 1 개 뽑기]
@@ -195,7 +195,7 @@ static void comb(int[] arr, boolean[] visited, int depth, int n, int r) {
 
 <br><br>
 
-## 전체 소스코드
+### 전체 소스코드
 
 ```java
 /**
@@ -272,7 +272,7 @@ public class Combination {
 
 <br>
 
-### Java Code
+#### Java Code
 
 ```java
 /**
