@@ -50,7 +50,7 @@ class Solution {
 }
 ```
 
-<br><br>
+<br>
 
 # Java Code 2
 
@@ -64,5 +64,15 @@ class Solution {
         
         return nums[0];
     }
+}
+```
+
+<br>
+
+# Kotlin code
+
+```kotlin
+class Solution {
+    fun singleNumber(nums: IntArray) = nums.reduce { acc, i -> acc.xor(i) }
 }
 ```
