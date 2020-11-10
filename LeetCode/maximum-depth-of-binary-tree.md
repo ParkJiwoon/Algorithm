@@ -35,3 +35,21 @@ class Solution {
     }
 }
 ```
+
+<br>
+
+# Kotlin Code
+
+```kotlin
+class Solution {
+    fun maxDepth(root: TreeNode?): Int {
+        return goDepth(root, 0)
+    }
+    
+    fun goDepth(node: TreeNode?, depth: Int): Int {
+        node ?: return depth
+        
+        return Math.max(goDepth(node.left, depth + 1), goDepth(node.right, depth + 1))
+    }
+}
+```
