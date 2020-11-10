@@ -69,7 +69,7 @@ class Solution {
 
 <br>
 
-# Kotlin code
+# Kotlin Code
 
 ```kotlin
 class Solution {
