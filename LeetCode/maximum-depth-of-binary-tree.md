@@ -49,7 +49,7 @@ class Solution {
     fun goDepth(node: TreeNode?, depth: Int): Int {
         node ?: return depth
         
-        return Math.max(goDepth(node.left, depth + 1), goDepth(node.right, depth + 1))
+        return maxOf(goDepth(node.left, depth + 1), goDepth(node.right, depth + 1))
     }
 }
 ```
