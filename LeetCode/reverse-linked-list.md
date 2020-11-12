@@ -26,11 +26,15 @@ Linked List 의 root 가 주어지면 뒤집은 Linked List 의 root 를 구하�
 
 ![](./image/reverse-linked-list-1.png)
 
+<br>
+
 ## 2. head.next.next = head;
 
 `head.next.next` 가 `head` 를 가리키게 만들어서 4 와 5 는 서로를 가리키게 됩니다. 
 
 ![](./image/reverse-linked-list-2.png)
+
+<br>
 
 ## 3. head.next = null;
 
@@ -42,15 +46,21 @@ Linked List 의 root 가 주어지면 뒤집은 Linked List 의 root 를 구하�
 
 ![](./image/reverse-linked-list-3.png)
 
+<br>
+
 ## 4. 첫 번째 함수를 빠져나올 때의 최종 모습
 
 ![](./image/reverse-linked-list-4.png)
+
+<br>
 
 ## 5. 두 번째 함수는 다음과 같은 상태입니다.
 
 4 노드가 가리키는 노드가 없기 때문에 NULL 노드를 가리킨다고 할 수 있습니다.
 
 ![](./image/reverse-linked-list-5.png)
+
+<br>
 
 ## 6. 두 번째 함수를 빠져나올 때의 최종 모습
 
