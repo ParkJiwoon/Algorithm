@@ -105,3 +105,20 @@ class Solution {
     }
 }
 ```
+
+<br>
+
+# Kotlin Code
+
+```kotlin
+class Solution {
+    fun reverseList(head: ListNode?): ListNode? {
+        return head?.next?.let {
+            reverseList(it).apply {
+                head.next.next = head;
+                head.next = null;
+            }
+        } ?: head
+    }
+}
+```
