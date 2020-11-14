@@ -28,16 +28,39 @@ class Solution {
         return traverse(nums, 0, nums.length - 1);
     }
     
-    public TreeNode traverse(int[] nums, int begin, int end) {
-        if (begin > end) return null;
+    public TreeNode traverse(int[] nums, int low, int high) {
+        if (low > high) return null;
         
-        int mid = begin + (end - begin)/2;
+        int mid = low + (high - low)/2;
         
         return new TreeNode(
             nums[mid],
-            traverse(nums, begin, mid - 1),
-            traverse(nums, mid + 1, end)
+            traverse(nums, low, mid - 1),
+            traverse(nums, mid + 1, high)
         );
+    }
+}
+```
+
+<br>
+
+# Kotlin Code
+
+```kotlin
+class Solution {
+    fun sortedArrayToBST(
+        nums: IntArray, 
+        low: Int = 0, 
+        high: Int = nums.size - 1
+    ): TreeNode? {
+        if (low > high) return null
+        
+        val mid = low + (high - low) / 2;
+        
+        return TreeNode(nums[mid]).apply {
+            left = sortedArrayToBST(nums, low, mid - 1)
+            right = sortedArrayToBST(nums, mid + 1, high)
+        }
     }
 }
 ```
