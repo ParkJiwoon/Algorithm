@@ -12,7 +12,7 @@
 
 많이 알려진 재귀로 풀면 `O(n)` 에 풀리겠지만 Follow up 에 다음 문장이 있었습니다.
 
-```
+```html
 Recursive solution is trivial, could you do it iteratively?
 ```
 
