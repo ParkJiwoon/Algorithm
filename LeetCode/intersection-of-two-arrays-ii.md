@@ -1,89 +1,72 @@
 # Problem
 
-- [문제 링크](https://leetcode.com/problems/intersection-of-two-arrays-ii/)
+- [문제 링크](https://leetcode.com/problems/intersection-of-two-linked-lists/)
 
 <br>
 
-두 배열에서 중복되는 원소들을 모아서 만든 배열을 구하는 문제입니다.
+리스트 두 개가 주어졌을 때 두 리스트의 겹치는 부분의 `HeadNode` 를 리턴하는 문제입니다.
 
 <br><br>
 
 # Solution
 
-각 배열에 같은 숫자가 여러 개 존재하면 겹치는 만큼 전부 리턴해야 하기 때문에 일반적인 교집합과는 조금 다릅니다.
-
-결국 각 숫자에 있는 값들을 전부 비교하는 수밖에 없습니다.
-
-원소의 범위가 정해져 있지 않으므로 `HashMap` 을 사용해서 개수를 비교하면 됩니다.
+이 문제에서 핵심은 `두 리스트의 길이가 다를 때도 O(N) 시간복잡도에 O(1) 공간복잡도에 구해야 한다`는 점입니다.
 
 <br>
 
-Folllow up 1 에서 두 배열이 정렬된 상태면 어떻게 최적화 가능하냐는 질문이 있습니다.
+원래라면 힘들겠지만 가능하도록 만드는 문제의 조건이 여러개 있습니다.
 
-각 배열이 정렬된 상태라면 `Two pointer` 를 사용하여 풀 수 있습니다.
+1. A 리스트와 B 리스트의 중복된 부분은 값만 중복되는 게 아니라 주소값 자체가 중복된다.
+2. 이 문제에서 만들어지는 모든 리스트는 싸이클이 형성되지 않는다.
 
 <br>
 
-Follow up 2 에서 정렬된 상태이면서 한쪽 배열의 크기가 무조건 작을 경우 어떻게 최적화 하는 지 다시 물어봅니다.
+간단히 코드 설명을 하면 다음과 같습니다.
 
-`nums1` 배열의 크기가 작다면 `nums1` 배열을 전체 순회하면서 각 원소 값을 `nums2` 에서 이진 탐색을 이용하여 찾으면 됩니다.
+각 헤드 노드를 `a, b` 변수에 담습니다.
 
-중복된 값 처리 때문에 귀찮아서 구현은 생략합니다.
+`while` 문으로 `a != b` 여부를 확인하면서 노드 순회를 진행합니다.
+
+1 번 조건으로 인해 값을 직접 비교하지 않고 주소값을 비교해도 일치 여부를 확인할 수 있습니다.
+
+각 리스트가 끝에 도달하면 **다른 리스트의 헤드로 이동합니다**
+
+그리고 마찬가지로 노드를 계속 순회하고 끝에 도달하는 순간 종료됩니다.
+
+<br>
+
+이렇게 하면 두 리스트의 길이가 달라도 A+B 의 길이는 같기 때문에 동일하게 비교할 수 있습니다.
+
+간단하게 문자로 표현해봅니다.
+
+```html
+A: a1 -> a2 -> a3 -> c1 -> c2
+B: b1 -> b2 -> c1 -> c2
+
+while 문으로 비교
+a1 -> a2 -> a3 -> c1 -> c2 -> b1 -> b2 -> c1 -> c2 -> null
+b1 -> b2 -> c1 -> c2 -> a1 -> a2 -> a3 -> c1 -> c2 -> null
+```
+
+<br>
+
+2 번 조건으로 문제에서 등장하는 모든 노드는 싸이클이 형성되지 않기 때문에 무조건 마지막에 둘 다 `null` 값이 되며 반복분이 종료됩니다.
 
 <br><br>
 
 # Java Code
 
 ```java
-// Normal Solution - Using HashMap O(n + m)
-class Solution {
-    public int[] intersect(int[] nums1, int[] nums2) {
-        Map<Integer, Integer> map = new HashMap<>(); // <number, count>
-        List<Integer> list = new ArrayList<>();
+public class Solution {
+    public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
+				ListNode a = headA, b = headB;
         
-        for (int num : nums1) {
-            map.merge(num, 1, Integer::sum);
+        while (a != b) {
+            a = (a == null) ? headB : a.next;
+            b = (b == null) ? headA : b.next;
         }
         
-        for (int num : nums2) {
-            int count = map.getOrDefault(num, 0);
-            
-            if (count > 0) {
-                list.add(num);
-                map.put(num, count - 1);
-            }
-        }
-        
-        return list.stream().mapToInt(k -> k).toArray();
-    }
-}
-
-
-// Follow up 1 - O(max(n, m))
-// What if the given array is already sorted? 
-// How would you optimize your algorithm?
-// 두 배열이 정렬된 상태면 two-pointer 를 사용해서 최적화 가능
-class Solution {
-    public int[] intersect(int[] nums1, int[] nums2) {
-        List<Integer> list = new ArrayList<>();
-        int i = 0, j = 0;
-        
-        Arrays.sort(nums1);
-        Arrays.sort(nums2);
-        
-        while (i < nums1.length && j < nums2.length) {
-            if (nums1[i] == nums2[j]) {
-                list.add(nums1[i]);
-                i++;
-                j++;
-            } else if (nums1[i] < nums2[j]) {
-                i++;
-            } else {
-                j++;
-            }
-        }
-        
-        return list.stream().mapToInt(k -> k).toArray();
+        return a;
     }
 }
 ```
