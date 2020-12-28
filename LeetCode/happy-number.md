@@ -4,91 +4,74 @@
 
 <br>
 
-숫자가 주어지면 `(각 자리수)^2` 의 합이 최종적으로 1 이 되는지 아닌지 판단하는 문제입니다.
+주어진 `n` 이 Happy Number 에 해당하는 지 찾는 문제입니다.
+
+Happy Number 여부를 판단하기 위해서는 다음과 같은 과정을 거쳐야 합니다.
+
+1. `n` 을 각 자릿수별로 나눈다.
+2. 나눈 수를 각각 제곱한 다음에 더한다.
+3. 더한 수가 1이 되면 Happy Number
+
+<br>
+
+위 세 과정을 계속해서 반복하며 Happy Number 로 판단되는 경우 `true` 를 리턴하고 영원히 반복되는 Cycle 을 형성하는 경우 `false` 를 리턴합니다.
 
 <br><br>
 
-# Solution 1
+# Solution
 
-각 자리수로 나누고 제곱한 다음에 전부 합하는 건 `getDigitSum` 함수를 따로 만들었습니다.
+반복문을 사용해서 풀 수 있습니다.
 
-그리고 `n == 1` 이 될 때까지 반복하면서 지나온 숫자는 `Set` 에 담습니다.
+간단한 풀이는 `n` 을 계속 계산하면서 `HashSet` 에 담아서 확인하는 겁니다.
 
-`n` 을 새롭게 계산했을 때 `Set` 에 존재하는 숫자라면 영원히 1 이 될 수 없다는 뜻입니다.
+만약 추가 메모리 없이 풀고 싶다면 투포인터를 사용하면 됩니다.
+
+Cycle 을 이룰 경우 `slow` 와 `fast` 의 변수가 언젠가 같아지는 순간이 옵니다.
 
 <br><br>
 
-# Java Code 1
+# Java Code
 
 ```java
 class Solution {
+    // Space Complexity O(n) using HashSet
     public boolean isHappy(int n) {
         Set<Integer> set = new HashSet<>();
         
         while (n != 1) {
-            n = getDigitSum(n);
-            
-            if (set.contains(n)) {
+            if (!set.add(n)) {
                 return false;
             }
             
-            set.add(n);
+            n = getNext(n);
         }
-
+        
         return true;
     }
     
-    private int getDigitSum(int number) {
-        int sum = 0;
-        
-        while (number != 0) {
-            sum += (number % 10) * (number % 10);
-            number /= 10;
-        }
-        
-        return sum;
-    }
-}
-```
-
-<br><br>
-
-# Solution 2
-
-`n == 1` 이 되지 않는 경우는 무한 반복하는 경우입니다.
-
-무한 반복한다는건 싸이클을 형성한다는 뜻이고 싸이클을 찾는지만 확인하면 됩니다.
-
-**_Floyd's Cycle Detection Algorithm_** 을 이용하여 싸이클을 찾을 수 있습니다.
-
-<br><br>
-
-# Java Code 2
-
-```java
-class Solution {
+    // Space Complexity O(1)
     public boolean isHappy(int n) {
-        int slow = getDigitSum(n);
-        int fast = getDigitSum(getDigitSum(n));
-                               
-        while (fast != 1 && slow != 1) {
-            if (fast == slow) {
+        int slow = getNext(n);
+        int fast = getNext(getNext(n));
+        
+        while (slow != 1 && fast != 1) {
+            if (slow == fast) {
                 return false;
             }
             
-            slow = getDigitSum(slow);
-            fast = getDigitSum(getDigitSum(fast));
+            slow = getNext(slow);
+            fast = getNext(getNext(fast));
         }
-
+        
         return true;
     }
-    
-    private int getDigitSum(int number) {
+
+    private int getNext(int num) {
         int sum = 0;
         
-        while (number != 0) {
-            sum += (number % 10) * (number % 10);
-            number /= 10;
+        while (num != 0) {
+            sum += (num % 10) * (num % 10);
+            num /= 10;
         }
         
         return sum;
