@@ -33,7 +33,7 @@ iterative 하게 푸는 방법은 `Stack` 을 이용해서 다음 4 개 플로�
 
 [3, 2, 1] 순서로 담기게 되어 `pop` 할 때는 depth 가 깊은 순인 [1, 2, 3] 순서로 나옵니다.
 
-![](./image/binary-tree-inorder-traversal-1.png)
+![](https://github.com/ParkJiwoon/Algorithm/blob/master/LeetCode/image/binary-tree-inorder-traversal-1.png?raw=true)
 
 <br>
 
@@ -43,13 +43,13 @@ iterative 하게 푸는 방법은 `Stack` 을 이용해서 다음 4 개 플로�
 
 코드상으로는 `node = node.right` 로 매번 이동하지만, `null` 값이기 때문에 무시됩니다.
 
-![](./image/binary-tree-inorder-traversal-2.png)
+![](https://github.com/ParkJiwoon/Algorithm/blob/master/LeetCode/image/binary-tree-inorder-traversal-2.png?raw=true)
 
 <br>
 
 ## 3. Stack 에서 Pop 하면서 val 을 담는다. (2)
 
-![](./image/binary-tree-inorder-traversal-3.png)
+![](https://github.com/ParkJiwoon/Algorithm/blob/master/LeetCode/image/binary-tree-inorder-traversal-3.png?raw=true)
 
 <br>
 
@@ -57,7 +57,7 @@ iterative 하게 푸는 방법은 `Stack` 을 이용해서 다음 4 개 플로�
 
 오른쪽 자식 노드가 `null` 이 아니기 때문에 이동합니다.
 
-![](./image/binary-tree-inorder-traversal-4.png)
+![](https://github.com/ParkJiwoon/Algorithm/blob/master/LeetCode/image/binary-tree-inorder-traversal-4.png?raw=true)
 
 <br>
 
@@ -67,7 +67,7 @@ iterative 하게 푸는 방법은 `Stack` 을 이용해서 다음 4 개 플로�
 
 최종적으로는 노드의 숫자 순서대로 전부 출력됩니다.
 
-![](./image/binary-tree-inorder-traversal-5.png)
+![](https://github.com/ParkJiwoon/Algorithm/blob/master/LeetCode/image/binary-tree-inorder-traversal-5.png?raw=true)
 
 <br><br>
 
