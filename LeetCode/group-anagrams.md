@@ -34,7 +34,7 @@ Hash 로 문제를 해결할 수 있습니다.
 
 내부적으로 `for` 문과 `StringBuilder` 를 사용하기 때문에 시간복잡도는 `O(N * K)` 가 됩니다.
 
-<br><br>
+<br>
 
 두 번째 솔루션은 다른 사람들의 **Submission Code** 를 참고했습니다.
 
