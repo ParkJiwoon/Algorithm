@@ -18,18 +18,7 @@
 
 <br>
 
-arr | value | | | |
-:--: | :--: | :--: | :--: | :--:
-Input | 1 | 2 | 3 | 4
-Output | 2 * 3 * 4 | 1 * 3 * 4 | 1 * 2 * 4 | 1 * 2 * 3
-
-<br>
-
-arr | value | | | |
-:--: | :--: | :--: | :--: | :--:
-Input | 1 | 2 | 3 | 4
-left -> right |  | 1 | 1 * 2 | 1 * 2 * 3
-right -> left | 2 * 3 * 4 | 3 * 4 | 4 | 
+![](https://github.com/ParkJiwoon/Algorithm/blob/master/LeetCode/image/product-of-array-except-self.png?raw=true)
 
 <br>
 
