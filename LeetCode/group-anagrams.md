@@ -38,7 +38,7 @@ Hash 로 문제를 해결할 수 있습니다.
 
 두 번째 솔루션은 다른 사람들의 **Submission Code** 를 참고했습니다.
 
-두번째 솔루션과 같은 해시지만 배열 `String` 을 그대로 키 값으로 사용했던 것과 달리 `Integer` 값을 사용합니다.
+두번째 솔루션과 같은 해시지만 배열 `String` 을 그대로 키 값으로 사용했던 것과 달리 `Long` 값을 사용합니다.
 
 26 개의 소수값을 배열에 미리 넣어둔 뒤 알파벳의 갯수만큼 `hashKey` 값에 곱해줍니다.
 
@@ -52,6 +52,7 @@ Hash 로 문제를 해결할 수 있습니다.
 
 ```java
 // 1. 배열 자체를 String 으로 만들어서 키값으로 사용
+// k 값이 작아서 그런건지 키값 String 길이가 길어서 그런건지 소트보다 속도는 느림
 class Solution {
     public List<List<String>> groupAnagrams(String[] strs) {
         Map<String, List<String>> map = new HashMap<>();
@@ -72,6 +73,7 @@ class Solution {
     }
 }
 
+
 // 2. 소수값을 이용하여 hash key 값을 만듬
 class Solution {
     public List<List<String>> groupAnagrams(String[] strs) {
@@ -80,22 +82,21 @@ class Solution {
                         59, 61, 67, 71, 73, 79, 83, 89, 
                         97, 101};
         
-        Map<Integer, List<String>> map = new HashMap<>();
+        Map<Long, List<String>> map = new HashMap<>();
 
         for (String str : strs) {
-            // hash
-            int hashKey = 1;
-            for (char c : str.toCharArray()) hashKey *= primes[c - 'a'];
-
-            // map renewal
+            long hashKey = 1;
+            for (char c : str.toCharArray()) {
+                hashKey *= (long) primes[c - 'a'];
+            }
+            
             if (!map.containsKey(hashKey)) {
                 map.put(hashKey, new LinkedList<>());
             }
-            
             map.get(hashKey).add(str);
         }
         
-        return new ArrayList<>(map.values());
+        return new LinkedList<>(map.values());
     }
 }
 ```
