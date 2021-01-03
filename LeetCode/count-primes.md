@@ -22,11 +22,9 @@
 
 Discuss 보고 개선한 코드를 추가했습니다.
 
-기존 코드는 소수가 아닌 애들을 체크한 다음에 나머지를 카운트 했다면 개선된 코드는 소수들을 체크하는 문제입니다.
-
 `count = n / 2` 로 시작하는 이유는 2 를 제외한 짝수는 소수가 될 수 없기 때문입니다.
 
-그리고 `for` 문을 돌면서 짝수 번째를 제외한 모든 소수를 체크합니다.
+2 의 배수는 어차피 셀 필요가 없기 때문에 처음부터 제외하고 3 부터 홀수들의 배수만 체크해서 소수가 아닌 값들을 제외합니다.
 
 <br><br>
 
@@ -60,18 +58,18 @@ class Solution {
 class Solution {
     public int countPrimes(int n) {
         if (n < 3) return 0;
-        
-        boolean[] prime = new boolean[n];
+
+        boolean[] isNotPrime = new boolean[n];
         int count = n / 2;
-        
+
         for (int i = 3; i * i < n; i += 2) {
             for (int j = i * i; j < n; j += i * 2) {
-                if (prime[j]) continue;
+                if (isNotPrime[j]) continue;
                 count--;
-                prime[j] = true;
+                isNotPrime[j] = true;
             }
         }
-        
+
         return count;
     }
 }
