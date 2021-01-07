@@ -47,3 +47,25 @@ class Solution {
     }
 }
 ```
+
+<br><br>
+
+# Kotlin Code
+
+```kotlin
+class Solution {
+    fun rob(nums: IntArray): Int = when (nums.size) {
+        0 -> 0
+        1 -> nums.first()
+        else -> {
+            nums[1] = maxOf(nums[0], nums[1])
+            
+            for (i in 2..nums.lastIndex) {
+                nums[i] = maxOf(nums[i - 1], nums[i - 2] + nums[i])
+            }
+            
+            nums.last()
+        }
+    }
+}
+```
