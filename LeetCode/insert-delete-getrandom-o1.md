@@ -1,12 +1,17 @@
 # Problem
-- 문제 링크 : https://leetcode.com/problems/insert-delete-getrandom-o1/
+
+- [문제 링크](https://leetcode.com/problems/insert-delete-getrandom-o1/)
+
+<br>
 
 문제에서 요구하는 사항에 맞게 RandomizedSet 을 구현하는 문제입니다.
+
 `insert(val)`, `remove(val)`, `getRandom()` 함수를 구현해야 하는데 모두 `O(1)` 의 시간복잡도를 가져야 합니다.
-<br>
-<br>
+
+<br><br>
 
 # Solution
+
 `ArrayList<Integer>`와 `HashMap<Integer, Integer>`을 이용하여 만들 수 있습니다.
 
 처음에는 `HashSet<Integer>`을 사용하려고 했는데 `getRandom()` 함수에서 값을 꺼낼 때 반복문(iterator)을 사용하기 때문에 `O(n)` 의 시간이 걸렸습니다.
@@ -23,7 +28,9 @@
 
 다음 그림과 같이 List 값이 들어있다고 가정합니다.
 
-![example1](./image/insert-delete-getrandom-o1_1.png)
+![](https://github.com/ParkJiwoon/Algorithm/blob/master/LeetCode/image/insert-delete-getrandom-o1_1.png?raw=true)
+
+<br>
 
 여기서 `remove(9)` 를 호출하면 두번째 index 값이 지워져야 합니다.
 
@@ -31,9 +38,9 @@
 
 list 내의 index 는 순차적으로 모두 존재함이 보장됩니다.
 
-![example2](./image/insert-delete-getrandom-o1_2.png)
-<br>
-<br>
+![](https://github.com/ParkJiwoon/Algorithm/blob/master/LeetCode/image/insert-delete-getrandom-o1_2.png?raw=true)
+
+<br><br>
 
 # Java Code
 ```java
