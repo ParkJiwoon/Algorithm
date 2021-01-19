@@ -4,167 +4,97 @@
 
 <br>
 
-LRU Cache 를 구현하면 됩니다.
+LRU Cache 를 구현하는 문제입니다.
 
-cache 는 capacity 가 정해져 있습니다.
-
-`get`, `put` 메소드를 구현하는데 `O(1)` 시간복잡도가 되도록 구현해야합니다.
+Least Recently Used (LRU) 란 새로운 데이터를 삽입할 때 사용 빈도수가 낮은 데이터부터 삭제하는 캐싱 기법입니다.
 
 <br><br>
 
-# Solution 1
+# Solution
 
-자바에 있는 `LinkedHashMap` 을 사용하면 쉽게 구현할 수 있습니다.
+원래 정석대로 구현하자면 Key - Value 를 갖는 Node 클래스를 만들어서 연결 리스트로 구현하면 되지만 Java 에는 `LinkedHashMap` 이라는 자료구조가 있습니다.
 
-`LinkedHashMap` 는 선언할 때 `accessOrder` 라는 변수를 받는데, 이 값을 `true` 로 세팅하면 `LinkedHashMap` 의 순서가 접근 빈도에 따라 바뀝니다.
+내부적으로 `Map` 과 `LinkedList` 를 사용해서 데이터를 넣은 순서를 지켜줍니다.
 
-가장 최근에 접근한 `Key` 데이터가 `LinkedHashMap` 의 가장 뒤에 위치하게 됩니다.
+<br>
 
-그러므로 `put` 메소드에서 데이터를 넣은 후 `map` 의 크기가 `capacity` 를 초과한다면 가장 사용되지 않은 데이터를 지우면 됩니다.
+그리고 이 `LinkedHashMap` 은 생성자에서 `accessOrder` 라는 값을 받습니다.
 
-가장 사용되지 않은 데이터는 `map` 의 가장 맨 앞에 있는 값이므로 해당 값을 구해서 `remove` 를 해주면 됩니다.
+이 값을 `true` 로 넘겨주면 접근 빈도에 따라서 순서가 바뀌게 됩니다.
 
-+)
+<br>
 
-아래에 있는 코드는 **Discuss** 에서 본건데 `LinkedHashMap` 을 상속받아서 구현했습니다.
+예를 들어 아래 코드에서 `a`, `b` 순서로 키값을 넣어서 `{ a=1, b=2 }` 순서로 들어있지만, `a` 에 접근했더니 순서가 바뀝니다.
 
-`removeEldestEntry` 는 가장 오래된 데이터를 지우는 메소드인데 `Override` 하여 조건을 변경하였습니다.
+이처럼 가장 최근에 접근한 값이 연결 리스트의 마지막으로 이동하게 됩니다.
 
-**LeetCode** 에서 이렇게 상속받아서 구현할 수 있는지 몰랐는데 처음 알게되어서 신기합니다.
+따라서 가장 사용되지 않은 값은 맨 첫번째에 남게 됩니다.
+
+```java
+Map<String, String> map = new LinkedHashMap<>(16, 0.75f, true);
+map.put("a", "1");
+map.put("b", "2"); // {a=1, b=2}
+map.get("a");      // {b=2, a=1}
+map.forEach((k, v) -> System.out.print(k + ": " + v + ", ")); // b: 2, a: 1
+```
+
+<br>
+
+두번째 코드는 LeetCode 에서만 될 것 같은 방법 `LinkedHashMap` 자체를 상속받아서 구현했습니다.
+
+`removeEldestEntry` 는 가장 오래된 `Entry` 를 삭제하기 때문에 좀더 편하게 구현할 수 있습니다.
 
 <br><br>
 
-# Java Code 1
+# Java Code
+
+## 1. LinkedHashMap 을 클래스 내부에 선언해서 구현
 
 ```java
 class LRUCache {
-    Map<Integer, Integer> map;
-    final int CAPACITY;
-    
+    private final Map<Integer, Integer> map;
+    private final int capacity;
+
     public LRUCache(int capacity) {
         map = new LinkedHashMap<>(capacity, 0.75f, true);
-        CAPACITY = capacity;
+        this.capacity = capacity;
     }
-    
+
     public int get(int key) {
         return map.getOrDefault(key, -1);
     }
-    
+
     public void put(int key, int value) {
         map.put(key, value);
-        
-        if (map.size() > CAPACITY) {
+
+        if (map.size() > capacity) {
             int leastUsedKey = map.keySet().iterator().next();
             map.remove(leastUsedKey);
         }
     }
 }
+```
 
+<br>
+
+## 2. LinkedHashMap 을 상속받아서 구현
+
+```java
 class LRUCache extends LinkedHashMap<Integer, Integer> {
-    private int capacity;
-    
+    private final int capacity;
+
     public LRUCache(int capacity) {
         super(capacity, 0.75f, true);
         this.capacity = capacity;
     }
-    
+
     public int get(int key) {
         return super.getOrDefault(key, -1);
     }
-    
+
     @Override
     protected boolean removeEldestEntry(Map.Entry eldest) {
         return size() > capacity;
-    }
-}
-```
-
-<br><br><br>
-
-# Solution 2
-
-정해는 **_Double Linked List_** 를 만드는 겁니다.
-
-`HashMap<Integer, Node>` 를 선언하여 `key` 에 대해서 `Node` 를 저장해둡니다.
-
-`head` 와 `tail` 로 관리하며 새로운 노드를 추가하는 `vodi addNodeAfterHead(Node node)` 메소드는 항상 `head` 다음에 노드를 삽입합니다.
-
-`map` 의 크기가 `capacity` 를 넘어간다면 `tail` 바로 위에 있는 `tail.prev` 노드를 삭제하면 됩니다.
-
-<br><br>
-
-# Java Code 2
-
-```java
-class LRUCache {
-    private class Node {
-        int key, value;
-        Node prev, next;
-        
-        Node(int key, int value) {
-            this.key = key;
-            this.value = value;
-        }
-    }
-    
-    Map<Integer, Node> map = new HashMap<>();;
-    Node head = new Node(0, 0);
-    Node tail = new Node(0, 0);
-    final int CAPACITY;
-    
-    public LRUCache(int capacity) {
-        CAPACITY = capacity;
-        head.next = tail;
-        tail.prev = head;
-    }
-    
-    public int get(int key) {
-        Node node = map.get(key);
-        
-        if (node == null) {
-            return -1;
-        }
-        
-        updateCache(node);
-        
-        return node.value;
-    }
-    
-    public void put(int key, int value) {
-        Node node = map.get(key);
-        
-        if (node != null) {
-            node.value = value;
-            updateCache(node);
-            return;
-        }
-        
-        Node newNode = new Node(key, value);
-        addNodeAfterHead(newNode);
-        map.put(key, newNode);
-
-        if (map.size() > CAPACITY) {
-            map.remove(tail.prev.key);
-            removeNode(tail.prev);
-        }
-    }
-    
-    private void updateCache(Node node) {
-        removeNode(node);
-        addNodeAfterHead(node);
-    }
-    
-    private void addNodeAfterHead(Node node) {
-        node.next = head.next;
-        head.next.prev = node;
-        
-        node.prev = head;
-        head.next = node;
-    }
-    
-    private void removeNode(Node node) {
-        node.prev.next = node.next;
-        node.next.prev = node.prev;
     }
 }
 ```
