@@ -48,7 +48,7 @@ map.forEach((k, v) -> System.out.print(k + ": " + v + ", ")); // b: 2, a: 1
 
 # Java Code
 
-### LinkedHashMap 을 클래스 내부에 선언해서 구현
+#### 1) LinkedHashMap 을 클래스 내부에 선언해서 구현
 
 ```java
 class LRUCache {
@@ -77,7 +77,7 @@ class LRUCache {
 
 <br>
 
-### LinkedHashMap 을 상속받아서 구현
+#### 2) LinkedHashMap 을 상속받아서 구현
 
 ```java
 class LRUCache extends LinkedHashMap<Integer, Integer> {
