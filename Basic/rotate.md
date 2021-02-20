@@ -1,12 +1,51 @@
-# 회전
-
-가끔 문제에서 2차원 배열을 90도 회전시켜야 하는 문제가 있습니다.
+가끔 알고리즘 문제를 풀다보면 2차원 배열을 90도 회전시켜야 하는 문제가 있습니다.
 
 2차원 배열을 90도, 180도, 270도 회전시키는 방법을 알아봅니다.
 
 <br>
 
-## 90도 회전
+# N * N 배열에서의 90도 회전
+
+가로, 세로가 같은 `n * n` 배열에서는 좀더 쉽게 회전시킬 수 있습니다.
+
+심지어 별도의 배열을 선언하지 않고 해당 배열의 값을 직접 회전시킬 수 있습니다.
+
+아래 그림처럼 기준 선을 잡고 맞은편의 숫자들을 한번씩 교환해주면 됩니다.
+
+![](https://github.com/ParkJiwoon/Algorithm/blob/master/LeetCode/image/rotate-image.png?raw=true)
+
+<br>
+
+## Java Code
+
+```java
+public void rotate(int[][] matrix) {
+    int n = matrix.length;
+
+    // reverse up and down
+    for (int i = 0; i < n / 2; i++) {
+        for (int j = 0; j < n; j++) {
+            int temp = matrix[i][j];
+            matrix[i][j] = matrix[n - i - 1][j];
+            matrix[n - i - 1][j] = temp;
+
+        }
+    }
+
+    // reverse diagonally
+    for (int i = 0; i < n; i++) {
+        for (int j = i; j < n; j++) {
+            int temp = matrix[i][j];
+            matrix[i][j] = matrix[j][i];
+            matrix[j][i] = temp;
+        }
+    }
+}
+```
+
+<br><br>
+
+# 90도 회전
 
 회전시키려는 `arr` 2차원 배열이 있습니다.
 
@@ -20,7 +59,7 @@
 
 <br>
 
-### Java Code
+## Java Code
 
 ```java
 // 90 rotate
@@ -41,7 +80,7 @@ static int[][] rotate(int[][] arr) {
 
 <br><br>
 
-## 90도, 180도, 270 도 회전
+# 90도, 180도, 270 도 회전
 
 사실 90도 회전만 알아도 2번, 3번 반복으로 180도, 270도를 할 수 있지만
 
@@ -53,7 +92,7 @@ static int[][] rotate(int[][] arr) {
 
 <br>
 
-### Java Code
+## Java Code
 
 ```java
 static int[][] rotate(int[][] arr, int degree) {
@@ -95,7 +134,7 @@ static int[][] rotate(int[][] arr, int degree) {
 
 <br><br>
 
-## 전체 소스코드
+# 전체 소스코드
 
 ```java
 class Main {
