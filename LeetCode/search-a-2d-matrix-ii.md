@@ -18,9 +18,9 @@ __오른쪽 위__ 혹은 __왼쪽 아래__ 에서 시작하며 현재 값보다 
 
 예를 들어 왼쪽 아래에서 시작한다면 `col = matrix.length - 1` 이고 `row = 0` 에서 시작합니다.
 
-만약 찾는 값이 현재 위치에 있는 값보다 작으면 작은쪽으로 이동합니다. (`col--`)
+만약 찾는 값이 현재 위치에 있는 값보다 작으면 작은쪽 (위쪽) 으로 이동합니다. (`row--`)
 
-현재 위치에 있는 값보다 크면 커지는 쪽으로 이동합니다. (`row++`)
+현재 위치에 있는 값보다 크면 커지는 쪽 (오른쪽) 으로 이동합니다. (`col++`)
 
 <br><br>
 
@@ -31,22 +31,23 @@ class Solution {
     public boolean searchMatrix(int[][] matrix, int target) {
         if (matrix.length == 0) return false;
         
-        int col = matrix.length - 1;
-        int row = 0;
+        int row = matrix.length - 1;
+        int col = 0;
         
-        while (col >= 0 && row < matrix[0].length) {
-            int value = matrix[col][row];
+        while (row >= 0 && col < matrix[0].length) {
+            int value = matrix[row][col];
 
             if (target == value) {
                 return true;
             } else if (target < value) {
-                col--;
+                row--;
             } else {
-                row++;
+                col++;
             }
         }
         
         return false;
     }
 }
+
 ```
