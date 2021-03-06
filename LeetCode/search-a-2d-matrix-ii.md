@@ -4,7 +4,9 @@
 
 <br>
 
-2차원 배열 `matrix` 안에 `target` 값이 있으면 `true` 없으면 `false` 를 return 하는 문제입니다.
+2차원 배열 `matrix` 안에 `target` 값이 있으면 `true` 
+
+없으면 `false` 를 return 하는 문제입니다.
 
 `matrix` 안의 숫자는 왼쪽에서 오른쪽으로 증가하고 위쪽에서 아래쪽으로 증가합니다.
 
