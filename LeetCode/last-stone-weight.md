@@ -14,7 +14,7 @@
 
 <br><br>
 
-# Solution 1 - 
+# Solution 1 - 우선순위 큐
 
 우선순위 큐를 사용합니다.
 
